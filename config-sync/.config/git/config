@@ -1,0 +1,7 @@
+[user]
+	name = uchin
+	email = yuqin.li@foxmail.com
+[core]
+	autocrlf = input
+[init]
+	defaultBranch = master
