@@ -40,7 +40,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ==============================================================================
-# Chapter3. config for dependencies
+# Chater3. config for dependencies
 # ==============================================================================
 # alias dependencies by pacman
 alias lg='/usr/bin/lazygit'
@@ -56,7 +56,7 @@ alias code='/opt/code/VSCode/bin/code --ozone-platform-hint=auto --enable-waylan
 export EDITOR='/usr/bin/nvim'
 
 
-export JAVA_HOME='/opt/java/jdk-11.0.2'
+export JAVA_HOME='/opt/java/jdk-24.0.2'
 export PATH=$JAVA_HOME/bin:$PATH
 
 export MAVEN_HOME='/opt/maven/apache-maven-3.9.9'
@@ -104,3 +104,17 @@ source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
 # source /usr/share/nvm/install-nvm-exec # old
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/conda/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/conda/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/conda/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/conda/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

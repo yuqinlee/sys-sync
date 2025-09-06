@@ -1,7 +1,11 @@
+-- define global map leader
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
 -- define common options
 local opts = {
-    noremap = true,      -- non-recursive
-    silent = true,       -- do not show message
+    noremap = true,         -- non-recursive
+    silent = false,         -- do not show message
 }
 
 -----------------
