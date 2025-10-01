@@ -18,11 +18,7 @@ require("lazy").setup({
         {import = "plugin.ui"},
         {import = "plugin.treesitter"},
         {import = "plugin.lsp"},
-        {import = "plugin.fmt"},
-        {import = "plugin.git"},
         {import = "plugin.tools"},
-        {import = "plugin.dap"},
-        {import = "plugin.file"}
     },
 })
 
