@@ -46,19 +46,20 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias lg='/usr/bin/lazygit'
 alias ff='fastfetch'
 
-alias ls='eza -h'
-alias l='eza -lg --icons=auto -h'
-alias ll='eza -lag --icons=auto -h'
+alias ls='eza -Bbh --icons=auto'
+alias l='eza -lBbgh --icons=auto'
+alias ll='eza -lBbgha --icons=auto'
 
 # dependencies for /opt
-alias code='/opt/code/VSCode/bin/code --ozone-platform-hint=auto --enable-wayland-ime'
+# alias code='/opt/code/VSCode/bin/code --ozone-platform-hint=auto --enable-wayland-ime'
 
 export EDITOR='/usr/bin/nvim'
 
-
+# java
 export JAVA_HOME='/opt/java/jdk-24.0.2'
 export PATH=$JAVA_HOME/bin:$PATH
 
+# maven
 export MAVEN_HOME='/opt/maven/apache-maven-3.9.9'
 export PATH=$MAVEN_HOME/bin:$PATH
 export MAVEN_REPOSITORY='/opt/maven/maven-repository'
@@ -84,12 +85,8 @@ export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$X
 
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
-
-alias vim=nvim
-
-
 # yazi wrapper
-function fm() {
+function f() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -104,6 +101,7 @@ source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
 # source /usr/share/nvm/install-nvm-exec # old
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/conda/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -117,4 +115,5 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
+conda deactivate
+# # <<< conda initialize <<<

@@ -1,0 +1,68 @@
+#window {
+    font-size: 12px;                                /* 全局字体大小 */
+    font-family: "Roboto Medium";                   /* 字体族 */
+    font-weight: bold;                              /* 字体加粗 */
+    background-color: rgba(0,0,0,0.7);              /* 窗口半透明背景 */
+    border: 3px solid rgba(168,85,122,1);           /* 窗口边框：酒红色 */
+    border-radius: 0px;                             /* 窗口圆角 */
+}
+
+/* 输入框样式 */
+#input {
+    margin: 8px 10px;                               /* 增加边距，不紧贴边框 */
+    background-color: rgba(200,200,200,0.3);
+    border-radius: 5px;                             /* 轻微圆角 */
+    font-size: 18px;                                /* 字体稍大 */
+    font-weight: 500;
+    color: darkslateblue;
+    padding: 6px;                                   /* 内边距 */
+    box-shadow: none;
+    border: none;
+}
+
+/* 输入框聚焦时 */
+#input:focus {
+    color: rgb(220,220,220);
+}
+
+/* 每一条候选项 */
+#entry {
+    margin: 6px 10px;                               /* 候选项与边框保持间距 */
+    padding: 6px 10px;
+    border-radius: 5px;                             /* 微圆角 */
+}
+
+/* 选中项样式 */
+#entry:selected {
+    background-color: lightslategray;               /* 灰色背景 */
+    border: 3px solid   #800020;                    /* 1px 灰色边框 */
+    color: #000000;                                 /* 文字改黑色 */
+    margin: 6px 10px;                               /* 保持条目间距 */
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+/* 候选项文字 */
+#text:selected {
+    color: #000000;
+}
+
+/* 候选项图标 */
+#img {
+    padding-right: 8px;
+}
+
+/* 展开器样式（如子菜单） */
+#expander-box {
+    background: transparent;
+    color: #333333;
+}
+
+/* 外部容器 */
+#outer-box {
+    box-shadow: none;                               /* 去掉阴影 */
+    border-radius: 0px;
+    padding-bottom: 10px;
+    transition: none;                               /* 去掉动画效果 */
+}
+

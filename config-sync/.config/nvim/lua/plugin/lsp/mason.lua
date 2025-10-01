@@ -21,7 +21,7 @@ return {
 				package:install()
 			end
 
-			-- 在使用 mscon-lspconfig 后可使用与 mason 中 lsp 相同格式命名
+			-- 在使用 mascon-lspconfig 后可使用与 mason 中 lsp 相同格式命名
 			-- 这里实际上做了一个映射
 			local lsp = require("mason-lspconfig").get_mappings().package_to_lspconfig[name]
 
@@ -47,7 +47,7 @@ return {
 					},
 				},
 			},
-			pyright = {},
+            pyright = {},
 			["html-lsp"] = {},
 			["css-lsp"] = {},
 			["typescript-language-server"] = {},

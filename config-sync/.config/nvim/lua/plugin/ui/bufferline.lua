@@ -1,4 +1,4 @@
--- bufferline plugin
+-- 标签页
 return {
     "akinsho/bufferline.nvim",
     dependencies = {
