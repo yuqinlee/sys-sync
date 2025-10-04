@@ -3,5 +3,6 @@
 	email = yuqin.li@foxmail.com
 [core]
 	autocrlf = input
+	quotepath = false
 [init]
 	defaultBranch = master
