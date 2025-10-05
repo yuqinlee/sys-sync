@@ -53,8 +53,8 @@ syntect_theme = ""
 # : Status {{{
 
 [status]
-separator_open  = ""
-separator_close = ""
+# separator_open  = ""
+# separator_close = ""
 separator_style = { fg = "gray", bg = "gray" }
 
 # Mode

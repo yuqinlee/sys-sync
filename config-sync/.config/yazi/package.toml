@@ -1,12 +1,17 @@
 [[plugin.deps]]
-use = "yazi-rs/plugins:smart-paste"
-rev = "864a021"
-hash = "104fa2ce07d8890b07fcff68b0aaf923"
+use = "yazi-rs/plugins:mount"
+rev = "d1c8baa"
+hash = "435a2af56ecfb3d05755fd5e24977d8b"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:mount"
-rev = "864a021"
-hash = "dd97eede8e20e59cd2604e8006e470e2"
+use = "yazi-rs/plugins:git"
+rev = "d1c8baa"
+hash = "63b6c222bf2103b3023389dde5e2ecfe"
+
+[[plugin.deps]]
+use = "llanosrocas/yaziline"
+rev = "e7042a8"
+hash = "9c2ab18ff5368056904e4ebb61b17571"
 
 [flavor]
 deps = []
