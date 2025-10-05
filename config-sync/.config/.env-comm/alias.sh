@@ -8,6 +8,7 @@ alias ff='fastfetch'
 alias ls='eza -Bbh --icons=auto'
 alias l='eza -lBbgh --icons=auto'
 alias ll='eza -lBbgha --icons=auto'
+alias tree="exa --tree --icons"
 
 # yazi wrapper
 function f() {

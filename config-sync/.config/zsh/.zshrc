@@ -41,6 +41,7 @@ znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-history-substring-search
 znap source zdharma-continuum/fast-syntax-highlighting
 
+eval "$(zoxide init zsh --cmd cd)"
 # nvm cotroller
 # [ -z "$NVM_DIR" ] && export NVM_DIR="/opt/nvm"
 # source /usr/share/nvm/nvm.sh
