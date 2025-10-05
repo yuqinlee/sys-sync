@@ -52,6 +52,7 @@ return {
 			["css-lsp"] = {},
 			["typescript-language-server"] = {},
 			["emmet-ls"] = {},
+			["bash-language-server"] = {},
 		}
 
 		for server, config in pairs(servers) do
