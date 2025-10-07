@@ -13,5 +13,10 @@ use = "llanosrocas/yaziline"
 rev = "e7042a8"
 hash = "9c2ab18ff5368056904e4ebb61b17571"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-paste"
+rev = "d1c8baa"
+hash = "75fd60b2df7115e0a6ca31a6a804d320"
+
 [flavor]
 deps = []

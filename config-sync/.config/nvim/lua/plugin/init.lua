@@ -19,6 +19,8 @@ require("lazy").setup({
 		{ import = "plugin.treesitter" },
 		{ import = "plugin.lsp" },
 		{ import = "plugin.tools" },
+		{ import = "plugin.editor" },
+		{ import = "plugin.git" },
 	},
 	lockfile = vim.fn.stdpath("config") .. "/lua/plugin/lazy-lock.json",
 })

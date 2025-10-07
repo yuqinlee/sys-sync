@@ -1,22 +1,25 @@
-# local general config import
-source "$XDG_CONFIG_HOME/.env-comm/alias.sh"
-source "$XDG_CONFIG_HOME/.env-comm/environment.sh"
+# load alias
+[ -f "$HOME/.config/.env-comm/alias.main.sh" ] && . "$HOME/.config/.env-comm/alias.main.sh"
+# load function
+[ -f "$HOME/.config/.env-comm/func.main.sh" ] && . "$HOME/.config/.env-comm/func.main.sh"
+# load environment
+[ -f "$HOME/.config/.env-comm/env.main.sh" ] && . "$HOME/.config/.env-comm/env.main.sh"
+
 
 # history setting
-setopt APPEND_HISTORY 
-setopt INC_APPEND_HISTORY 
-setopt HIST_IGNORE_DUPS 
-setopt HIST_FIND_NO_DUPS 
-setopt EXTENDED_HISTORY 
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt EXTENDED_HISTORY
 setopt SHARE_HISTORY
 bindkey -v
-
 
 # Download Znap, if it's not there yet.
 PLUGIN_HOME="$XDG_CONFIG_HOME"/zsh/plugin
 [[ -r  "$PLUGIN_HOME"/znap/znap.zsh ]] ||
-        git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git "$PLUGIN_HOME"/znap
+git clone --depth 1 -- \
+    https://github.com/marlonrichert/zsh-snap.git "$PLUGIN_HOME"/znap
 source "$PLUGIN_HOME"/znap/znap.zsh  # Start Znap
 
 zstyle ':znap:*' repos-dir "$PLUGIN_HOME"
