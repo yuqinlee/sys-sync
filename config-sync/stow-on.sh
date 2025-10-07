@@ -5,4 +5,4 @@ stow \
     --adopt \
     --ignore stow-on.sh \
     --ignore stow.off.sh \
-
+    --ignore etc \
