@@ -26,4 +26,10 @@
 
 - bluetui                   蓝牙管理tui
 - pulsemixer                音频管理tui
+- lazygit                   git管理tui
+- btop                      进程管理tui
+
+## aur 软件包
+
+- zotero                    文献管理
 
