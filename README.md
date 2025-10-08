@@ -11,7 +11,10 @@
 - fzf                       模糊查找
 - eza                       文件与目录展示
 - zoxide                    目录跳转
+- yazi                      文件管理器
+    - trash-cli             文件回收站
 - keyd                      按键映射工具
+
 
 ## 窗口管理
 

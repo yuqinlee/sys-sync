@@ -2,12 +2,6 @@
 #                     plugin key  config
 # =============================================================================
 
-# xxx
-[[mgr.prepend_keymap]]
-on = [ "m" ]
-run = "plugin relative-motions"
-desc = "Trigger a new relative motion"
-
 # 不进入目录粘贴
 [[mgr.prepend_keymap]]
 on   = "p"
@@ -18,6 +12,18 @@ desc = "Paste into the hovered directory or CWD"
 [[mgr.prepend_keymap]]
 on  = "M"
 run = "plugin mount"
+
+# 回收站
+[[mgr.prepend_keymap]]
+on = ["R","b"]
+run = "plugin recycle-bin"           
+desc = "Open Recycle Bin menu"
+
+# 撤回删除
+[[mgr.prepend_keymap]]
+on = ["R","u"]
+run = "plugin restore"
+desc = "Restore last deleted files/folders"
 
 # =============================================================================
 #                         yazi build-in config

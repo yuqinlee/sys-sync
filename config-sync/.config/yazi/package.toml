@@ -18,5 +18,15 @@ use = "yazi-rs/plugins:smart-paste"
 rev = "d1c8baa"
 hash = "75fd60b2df7115e0a6ca31a6a804d320"
 
+[[plugin.deps]]
+use = "uhs-robert/recycle-bin"
+rev = "03f6c4a"
+hash = "f14a951bf376d7fe73033c4a48aa5fa4"
+
+[[plugin.deps]]
+use = "boydaihungst/restore"
+rev = "2161735"
+hash = "901741afba1979739b4650324265162e"
+
 [flavor]
 deps = []
