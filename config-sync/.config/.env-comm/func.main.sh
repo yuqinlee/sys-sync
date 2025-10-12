@@ -27,15 +27,18 @@ proxy_off() {
 PROXY_ICON_ON=""     # nf-fa-globe
 PROXY_ICON_OFF=""    # nf-md-lan_disconnect
 proxy_status() {
-  if [[ -n "$http_proxy" || -n "$HTTP_PROXY" ]]; then
-    echo "%F{green}$PROXY_ICON_ON%f"
-  else
-    echo "%F{red}$PROXY_ICON_OFF%f"
-  fi
+    if [[ -n "$http_proxy" || -n "$HTTP_PROXY" ]]; then
+        echo "%F{green}$PROXY_ICON_ON%f"
+    else
+        echo "%F{red}$PROXY_ICON_OFF%f"
+    fi
 }
 
 precmd() {
-  RPROMPT="$(proxy_status)"
+    RPROMPT="$(proxy_status)"
 }
 
-[ -f "./func.opt.sh" ] && . "./func.opt.sh"
+SCRIPT_DIR=$(cd "$(dirname "$0")" || exit 1; pwd)
+
+[ -f "$SCRIPT_DIR/func.opt.sh" ] && . "$SCRIPT_DIR/func.opt.sh"
+

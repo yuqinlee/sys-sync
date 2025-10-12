@@ -18,5 +18,7 @@ export CALCHISTFILE="$XDG_CACHE_HOME"/calc_history
 export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
-[ -f "./env.opt.sh" ] && . "./env.opt.sh"
+SCRIPT_DIR=$(cd "$(dirname "$0")" || exit 1; pwd)
+
+[ -f "$SCRIPT_DIR/env.opt.sh" ] && . "$SCRIPT_DIR/env.opt.sh"
 
