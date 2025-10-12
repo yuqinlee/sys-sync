@@ -8,17 +8,13 @@
     "height": 0,
     "modules-left": [
 	    "clock",
-        "hyprland/workspaces"
-        // "hyprland/window"
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
-     //"modules-center": [
-    //     "hyprland/window"
-      //  "clock"
-     //],
     "modules-right": [
         "tray",
         "memory",
-        "cpu",
+        //"cpu",
         "backlight",
 		"bluetooth",
         "pulseaudio",
@@ -28,14 +24,14 @@
     ],
 
     "hyprland/window": {
-        "format": "󰣇 {initialTitle}"
+        "format": "  {initialTitle}"
     },
     
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "on-click": "activate"
-        // "format": "{icon}"
+        "on-click": "activate",
+         "format": "{icon}"
     },
 
     "tray": {

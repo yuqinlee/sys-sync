@@ -14,13 +14,13 @@ function f() {
 }
 
 # proxy config based v2ray
-proxy_on() {
+pon() {
     export http_proxy="http://127.0.0.1:20171"
     export https_proxy="http://127.0.0.1:20171"
     export ALL_PROXY="socks5://127.0.0.1:20170"
 }
 
-proxy_off() {
+pof() {
     unset http_proxy https_proxy ALL_PROXY
 }
 # 在右侧显示代理状态
