@@ -27,7 +27,10 @@
 - bluetui                   蓝牙管理tui
 - pulsemixer                音频管理tui
 - lazygit                   git管理tui
+- serie                     git commit tui
 - btop                      进程管理tui
+- isd                       systemd tui
+- impala                    iwctl tui
 
 ## aur 软件包
 
