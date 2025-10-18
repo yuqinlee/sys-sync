@@ -3,7 +3,7 @@
 # load function
 [ -f "$HOME/.config/.env-comm/func.main.sh" ] && . "$HOME/.config/.env-comm/func.main.sh"
 # load environment
-[ -f "$HOME/.config/.env-comm/env.main.sh" ] && . "$HOME/.config/.env-comm/env.main.sh"
+# [ -f "$HOME/.config/.env-comm/env.main.sh" ] && . "$HOME/.config/.env-comm/env.main.sh"
 
 
 # history setting
@@ -54,16 +54,16 @@ eval "$(zoxide init zsh --cmd cd)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/opt/conda/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/opt/conda/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/opt/conda/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/opt/conda/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# conda deactivate
+__conda_setup="$('/opt/conda/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/conda/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/conda/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/conda/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+conda deactivate
 # # <<< conda initialize <<<
