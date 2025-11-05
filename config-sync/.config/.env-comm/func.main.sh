@@ -19,11 +19,9 @@ pon() {
     export https_proxy="http://127.0.0.1:20171"
     export ALL_PROXY="socks5://127.0.0.1:20170"
 }
-
 pof() {
     unset http_proxy https_proxy ALL_PROXY
 }
-# 在右侧显示代理状态
 PROXY_ICON_ON=""     # nf-fa-globe
 PROXY_ICON_OFF=""    # nf-md-lan_disconnect
 proxy_status() {
@@ -33,11 +31,11 @@ proxy_status() {
         echo "%F{red}$PROXY_ICON_OFF%f"
     fi
 }
-
 precmd() {
     RPROMPT="$(proxy_status)"
 }
 
+# source out env
 SCRIPT_DIR=$(cd "$(dirname "$0")" || exit 1; pwd)
 
 [ -f "$SCRIPT_DIR/func.opt.sh" ] && . "$SCRIPT_DIR/func.opt.sh"
