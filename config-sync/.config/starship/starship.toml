@@ -1,0 +1,75 @@
+# ~/.config/starship.toml
+
+# 在每次提示前插入空行
+add_newline = false
+
+# 提示符格式：你可以只显示目录 + git 状态 +提示符字符
+format = """
+$character\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration
+"""
+
+[character]
+success_symbol = "[➜](green)"
+error_symbol = "[✘](red)"
+vicmd_symbol = "[](blue)"
+
+[directory]
+style = "cyan"
+home_symbol = "~"
+truncation_length = 1
+truncate_to_repo = false
+
+[git_branch]
+format = '[$symbol$branch]($style) '
+symbol = ""
+style = "bold purple"
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[ PICKING](bold red)'
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[hostname]
+# 如果你想在远程机器或特定主机上显示主机名
+style = "white"
+disabled = true
+
+[jobs]
+# 不显示后台作业数
+disabled = true
+
+[battery]
+# 显示电池状态
+disabled = true
+style = "bold yellow"
+
+[time]
+# 显示时间
+disabled = false
+format = "[$time]($style) "
+style = "bright-black"
+
+[username]
+# 仅在 root 或特定用户时显示
+style_user = "bold red"
+style_root = "bold red"
+disabled = true

@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # 导入通用 shell 环境
 # load alias
 [[ -f "$HOME/.config/.env-comm/alias.main.sh" ]] && source "$HOME/.config/.env-comm/alias.main.sh"
@@ -8,6 +15,7 @@
 HISTFILE="$XDG_CACHE_HOME"/zsh/zsh_history # 历史文件路径
 HISTSIZE=1000         # 当前 session 保存条数
 SAVEHIST=1000         # 写入文件的条数
+HISTTIMEFORMAT="%F %T " # 启用带时间的历史记录
 setopt APPEND_HISTORY
 setopt HIST_FIND_NO_DUPS
 setopt EXTENDED_HISTORY
@@ -38,7 +46,11 @@ source "$PLUGIN_HOME"/znap/znap.zsh  # Start Znap
 zstyle ':znap:*' repos-dir "$PLUGIN_HOME"
 
 # `znap prompt` makes your prompt visible in just 15-40ms!
-znap prompt sindresorhus/pure
+# znap prompt sindresorhus/pure
+# znap prompt romkatv/powerlevel10k
+
+# prompt powered by starship
+eval "$(starship init zsh)"
 
 # fzf-tab
 # it must be load before zsh-autosuggestions and so on
@@ -58,4 +70,10 @@ znap source zsh-users/zsh-history-substring-search
 znap source zdharma-continuum/fast-syntax-highlighting
 
 eval "$(zoxide init zsh --cmd cd)"
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.local/private/sys-sync/config-sync/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.local/private/sys-sync/config-sync/.config/zsh/.p10k.zsh ]] || source ~/.local/private/sys-sync/config-sync/.config/zsh/.p10k.zsh
 
