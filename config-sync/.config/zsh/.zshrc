@@ -1,79 +1,71 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# =============================================================================
+#                       导入通用 shell 环境
+# =============================================================================
+[[ -s "$XDG_CONFIG_HOME/.env-comm/alias.main.sh" ]] && source "$XDG_CONFIG_HOME/.env-comm/alias.main.sh"
+[[ -s "$XDG_CONFIG_HOME/.env-comm/func.main.sh"  ]] && source "$XDG_CONFIG_HOME/.env-comm/func.main.sh"
 
-# 导入通用 shell 环境
-# load alias
-[[ -f "$HOME/.config/.env-comm/alias.main.sh" ]] && source "$HOME/.config/.env-comm/alias.main.sh"
-# load function
-[[ -f "$HOME/.config/.env-comm/func.main.sh" ]] && source "$HOME/.config/.env-comm/func.main.sh"
-
-# 历史记录设置
-HISTFILE="$XDG_CACHE_HOME"/zsh/zsh_history # 历史文件路径
-HISTSIZE=1000         # 当前 session 保存条数
-SAVEHIST=1000         # 写入文件的条数
-HISTTIMEFORMAT="%F %T " # 启用带时间的历史记录
-setopt APPEND_HISTORY
-setopt HIST_FIND_NO_DUPS
-setopt EXTENDED_HISTORY
-setopt HIST_IGNORE_DUPS       # 忽略重复命令
-setopt HIST_IGNORE_ALL_DUPS   # 删除旧的重复项
-setopt HIST_IGNORE_SPACE      # 忽略以空格开头的命令
-setopt HIST_SAVE_NO_DUPS      # 保存时去重
-setopt HIST_REDUCE_BLANKS     # 删除多余空格
-setopt HIST_VERIFY            # 回车前先显示命令
-setopt INC_APPEND_HISTORY     # 命令执行后立即写入历史文件
-setopt SHARE_HISTORY          # 让不同终端共享历史
-
-# 基本设置
+# =============================================================================
+#                           基本设置
+# =============================================================================
 bindkey -v              # vim 模式
-setopt CORRECT          # 启用命令自动纠错
 setopt AUTO_CD          # 自动切换目录
 setopt AUTO_PARAM_SLASH # 自动补全路径
+setopt CORRECT          # 启用命令自动纠错
 setopt NOMATCH          # 展开通配符失败时报错
 setopt NO_CASE_GLOB     # 忽略大小写匹配文件名
 
-# plugin manager
+# =============================================================================
+#                          历史记录设置
+# =============================================================================
+HISTFILE="$XDG_CACHE_HOME"/zsh/zsh_history  # 历史文件路径
+HISTSIZE=1000                               # 当前 session 保存条数
+SAVEHIST=1000                               # 写入文件的条数
+HISTTIMEFORMAT="%F %T "                     # 启用带时间的历史记录
+setopt HIST_REDUCE_BLANKS                   # 删除多余空格
+setopt HIST_IGNORE_SPACE                    # 忽略以空格开头的命令
+setopt HIST_IGNORE_DUPS                     # 忽略重复命令
+setopt HIST_SAVE_NO_DUPS                    # 保存时去重
+setopt HIST_VERIFY                          # 回车前先显示命令
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS                 # 删除旧的重复项
+setopt APPEND_HISTORY                       # 追加历史
+setopt EXTENDED_HISTORY                     # 扩展历史记录
+setopt INC_APPEND_HISTORY                   # 命令执行后立即写入历史文件
+setopt SHARE_HISTORY                        # 让不同终端共享历史
+
+# =============================================================================
+#                            插件 
+# =============================================================================
 PLUGIN_HOME="$XDG_CONFIG_HOME"/zsh/plugin
 [[ -r  "$PLUGIN_HOME"/znap/znap.zsh ]] ||
 git clone --depth 1 -- \
     https://github.com/marlonrichert/zsh-snap.git "$PLUGIN_HOME"/znap # Download Znap, if it's not there yet.
 source "$PLUGIN_HOME"/znap/znap.zsh  # Start Znap
-
 zstyle ':znap:*' repos-dir "$PLUGIN_HOME"
 
-# `znap prompt` makes your prompt visible in just 15-40ms!
-# znap prompt sindresorhus/pure
-# znap prompt romkatv/powerlevel10k
-
-# prompt powered by starship
-eval "$(starship init zsh)"
-
+znap source zsh-users/zsh-completions
 # fzf-tab
 # it must be load before zsh-autosuggestions and so on
 # run cmd: `fzf --zsh > "$XDG_CONFIG_HOME"/zsh/fzf.zsh` after installed fzf
-# source "$XDG_CONFIG_HOME"/zsh/fzf.zsh
+# source "$XDG_CONFIG_HOME"/zsh/.fzf.zsh
 # ctrl+t: search file
 # alt+c: search file and cd to dir
 # ctrl+r: search history
 # ctrl+i: completions
-znap source Aloxaf/fzf-tab
-source "$XDG_CONFIG_HOME"/zsh/fzf.zsh
-
-# base tools
-znap source zsh-users/zsh-completions
+znap source Aloxaf/fzf-tab      # fzf tab 补全
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-history-substring-search
 znap source zdharma-continuum/fast-syntax-highlighting
 
-eval "$(zoxide init zsh --cmd cd)"
+# =============================================================================
+#                       Prompt & 工具初始化
+# =============================================================================
+# prompt powered by starship instead `znap prompt romkatv/powerlevel10k`
+znap eval startship "starship init zsh"         # starship
+znap eval zoxide "zoxide init zsh --cmd cd"     # zoxide
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.local/private/sys-sync/config-sync/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.local/private/sys-sync/config-sync/.config/zsh/.p10k.zsh ]] || source ~/.local/private/sys-sync/config-sync/.config/zsh/.p10k.zsh
+# =============================================================================
+#                       zsh 外部依赖
+# =============================================================================
+source "$XDG_CONFIG_HOME"/zsh/.fzf.zsh # fzf 按键绑定
 
