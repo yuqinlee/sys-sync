@@ -32,7 +32,7 @@ cherry_pick = '[ PICKING](bold red)'
 
 [git_status]
 style = "bold bright-black"
-format = '[\($all_status$ahead_behind\)]($style) '
+format = '[$all_status$ahead_behind]($style) '
 conflicted = "✗"
 ahead = "⇡${count}"
 behind = "⇣${count}"
