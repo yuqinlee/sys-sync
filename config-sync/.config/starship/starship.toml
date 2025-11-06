@@ -2,17 +2,17 @@
 add_newline = false
 
 format = """
-$character\
 $directory\
 $git_branch\
 $git_status\
-$cmd_duration
+$cmd_duration\
+$character\
 """
 
 [character]
 success_symbol = "[➜](bold green)"
-error_symbol = "[✘](red)"
-vicmd_symbol = "[](blue)"
+error_symbol = "[✘](bold red)"
+vicmd_symbol = "[](bright-blue)"
 
 [directory]
 style = "cyan"
