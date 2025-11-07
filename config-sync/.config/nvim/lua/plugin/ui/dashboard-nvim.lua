@@ -1,8 +1,8 @@
 return {
 	"nvimdev/dashboard-nvim",
 	dependencies = {
-        "nvim-tree/nvim-web-devicons"
-    },
+		"nvim-tree/nvim-web-devicons",
+	},
 	event = "VimEnter",
 	config = function()
 		local logo = [[
@@ -20,3 +20,4 @@ return {
 		require("dashboard").setup(opts)
 	end,
 }
+

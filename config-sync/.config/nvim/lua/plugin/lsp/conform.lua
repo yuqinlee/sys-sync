@@ -15,8 +15,9 @@ return {
 			lua = { "stylua" },
 			python = { "black", "isort" },
 			bash = { "shellcheck", "beautysh" },
-			sh = { "shellcheck", "beautysh" },
+			sh = { "shellcheck", "shfmt" },
 			zsh = { "shellcheck", "beautysh" },
+			fish = { "fish_indent" },
 		},
 		format_on_save = {
 			timeout_ms = 500,
@@ -46,11 +47,11 @@ return {
 
 	keys = {
 		{
-			"<leader>f",
+			"<leader>cf",
 			function()
 				require("conform").format({ lsp_format = true, timeout_ms = 500 })
 			end,
-			mode = { "n", "v" },
+			mode = { "n", "x" },
 			desc = "format file",
 		},
 	},

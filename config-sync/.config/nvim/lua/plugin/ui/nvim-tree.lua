@@ -6,7 +6,7 @@ return {
 		sort_by = "case_sensitive",
 		actions = {
 			open_file = {
-				quit_on_open = true,
+				quit_on_open = false,
 			},
 		},
 		-- 是否显示 git 状态
@@ -22,8 +22,8 @@ return {
 			-- 文件浏览器展示位置，左侧：left, 右侧：right
 			side = "left",
 			-- 行号是否显示
-			number = false,
-			relativenumber = false,
+			number = true,
+			relativenumber = true,
 			signcolumn = "yes", -- 显示图标
 			width = 30,
 		},

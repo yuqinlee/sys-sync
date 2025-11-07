@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons", -- 给每个 buffer 增加好看的图标
 	},
-	lazy = false,
+	event = "VeryLazy",
 	opts = {
 		options = {
 			diagnostics = "nvim_lsp",
@@ -36,13 +36,15 @@ return {
 
 	-- lazy 提供的快捷键绑定方式
 	keys = {
-		{ "<leader>bc", "<Cmd>BufferLinePickClose<CR>", desc = "pick close", silent = true },
-		{ "<leader>bd", "<Cmd>BufferLineClose 0<CR>", desc = "close current buffer", silent = true },
-		{ "<leader>bh", "<Cmd>BufferLineCyclePrev<CR>", desc = "prev buffer", silent = true },
-		{ "<leader>bl", "<Cmd>BufferLineCycleNext<CR>", desc = "next buffer", silent = true },
-		{ "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "close others", silent = true },
-		{ "<leader>bp", "<Cmd>BufferLinePick<CR>", desc = "pick buffer", silent = true },
-		{ "<leader>bm", "<Cmd>IceRepeat BufferLineMoveNext<CR>", desc = "move right", silent = true },
-		{ "<leader>bM", "<Cmd>IceRepeat BufferLineMovePrev<CR>", desc = "move left", silent = true },
+		{ "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
+		{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
+		{ "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
+		{ "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
+		{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+		{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+		{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+		{ "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+		{ "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+		{ "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
 	},
 }
