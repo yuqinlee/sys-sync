@@ -22,6 +22,7 @@ require("lazy").setup({
 		{ import = "plugin.editor" },
 		{ import = "plugin.git" },
 		{ import = "plugin.lang" },
+		{ import = "plugin.colorscheme" },
 	},
 	lockfile = vim.fn.stdpath("config") .. "/lua/plugin/lazy-lock.json",
 })
