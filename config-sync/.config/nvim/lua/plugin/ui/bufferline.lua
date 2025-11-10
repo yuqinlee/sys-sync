@@ -30,6 +30,12 @@ return {
 					text_align = "left",
 					separator = true,
 				},
+				{
+					filetype = "neo-tree",
+					text = "File Explorer",
+					text_align = "left",
+					separator = true,
+				},
 			},
 		},
 	},

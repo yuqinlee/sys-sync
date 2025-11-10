@@ -11,7 +11,7 @@ return {
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 		},
-		extensions = { "nvim-tree" },
+		extensions = { "nvim-tree","neo-tree"},
 		sections = {
 			lualine_a = {
 				{

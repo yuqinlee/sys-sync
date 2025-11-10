@@ -1,4 +1,4 @@
--- Flash enhances the built-in search functionality by showing labels at the end of each match, letting you quickly jump to a specific location.
+-- 快速定位
 return {
 	"folke/flash.nvim",
 	event = "VeryLazy",
@@ -9,7 +9,7 @@ return {
 			"s",
 			mode = { "n", "x", "o" },
 			function()
-                -- 直接跳转
+				-- 直接跳转
 				require("flash").jump()
 			end,
 			desc = "Flash",
@@ -18,7 +18,7 @@ return {
 			"S",
 			mode = { "n", "o", "x" },
 			function()
-                -- 括号等依赖 treesitter 选择
+				-- 括号等依赖 treesitter 选择
 				require("flash").treesitter()
 			end,
 			desc = "Flash Treesitter",

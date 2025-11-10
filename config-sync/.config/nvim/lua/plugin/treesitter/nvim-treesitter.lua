@@ -1,7 +1,6 @@
 -- 语法树分析
 return {
 	"nvim-treesitter/nvim-treesitter",
-	main = "nvim-treesitter.configs",
 	branch = "main",
 	event = "VeryLazy",
 	opts = {
