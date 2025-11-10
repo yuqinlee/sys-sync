@@ -82,3 +82,4 @@ print(YuchinNVIM.plugin[2].name)
 print(YuchinNVIM.plugin[2].module.a)
 print(YuchinNVIM.plugin[2].is_active)
 
+

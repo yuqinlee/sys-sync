@@ -1,15 +1,52 @@
+local has_words_before = function()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+  if col == 0 then
+    return false
+  end
+  local line = vim.api.nvim_get_current_line()
+  return line:sub(col, col):match("%s") == nil
+end
+
 -- LSP 等补全信息选择
 return {
 	"saghen/blink.cmp",
-	version = "*",
+    -- use a release tag to download pre-built binaries
+    version = '1.*',
+    -- optional: provides snippets for the snippet source
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 	},
 	event = { "InsertEnter", "CmdlineEnter" },
-	opts = {
+   	opts = {
 		snippets = {
 			preset = "default",
 		},
+  -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+    -- 'super-tab' for mappings similar to vscode (tab to accept)
+    -- 'enter' for enter to accept
+    -- 'none' for no mappings
+    --
+    -- All presets have the following mappings:
+    -- C-space: Open menu or open docs if already open
+    -- C-n/C-p or Up/Down: Select next/previous item
+    -- C-e: Hide menu
+    -- C-k: Toggle signature help (if signature.enabled = true)
+    --
+    -- See :h blink-cmp-config-keymap for defining your own keymap
+		keymap = {
+			preset = "super-tab",
+            
+  ['<C-k>'] = { 'select_prev', 'fallback' },
+  ['<C-j>'] = { 'select_next', 'fallback' },
+
+  
+  -- show with a list of providers
+  ['<leader>cc'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
+
+
+        },
+          -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- Adjusts spacing to ensure icons are aligned
 		appearance = {
 			-- sets the fallback highlight groups to nvim-cmp's highlight groups
 			-- useful for when your theme doesn't support blink.cmp
@@ -27,26 +64,56 @@ return {
 				},
 			},
 			menu = {
+                border = 'single',
 				draw = {
 					treesitter = { "lsp" },
+                     padding = { 0, 1 }, -- padding only on right side
+      components = {
+        kind_icon = {
+          text = function(ctx) return ' ' .. ctx.kind_icon .. ctx.icon_gap .. ' ' end
+        }
+      }
 				},
 			},
 			documentation = {
 				auto_show = true,
-				auto_show_delay_ms = 200,
+				auto_show_delay_ms = 100,
+                 window = { border = 'single' }
 			},
 			ghost_text = {
 				enabled = vim.g.ai_cmp,
 			},
 		},
+        signature = { window = { border = 'single' } },
+         -- Default list of enabled providers defined so that you can extend it
+    -- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "path", "snippets", "buffer", "lsp" },
+			default = { 
+                providers = {
+    path = {
+      opts = {
+        get_cwd = function(_)
+          return vim.fn.getcwd()
+        end,
+      },
+    },
+  },
+                "path", "lsp" , "buffer", "snippets"},
 		},
 
-		keymap = {
-			preset = "super-tab",
-		},
-
+         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+    -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+    -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+    --
+    -- See the fuzzy documentation for more information
+    fuzzy = {
+         sorts = {
+    'exact',
+    -- defaults
+    'score',
+    'sort_text',
+  },
+        implementation = "prefer_rust_with_warning" },
 		cmdline = {
 			enabled = true,
 			keymap = {
