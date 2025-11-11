@@ -117,6 +117,8 @@ return {
             enabled = true,
             keymap = {
                 preset = "super-tab",
+                ["<C-j>"] = { "select_next", "fallback" },
+                ["<C-k>"] = { "select_prev", "fallback" },
             },
             sources = function()
                 local cmd_type = vim.fn.getcmdtype()
