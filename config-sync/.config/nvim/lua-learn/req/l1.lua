@@ -1,4 +1,7 @@
 return {
-	a = "abc",
+	a = {
+		a = 1,
+		b = 2,
+	},
 	b = "def",
 }

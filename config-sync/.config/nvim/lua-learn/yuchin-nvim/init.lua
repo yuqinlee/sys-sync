@@ -42,6 +42,18 @@ YuchinNVIM.plugin = {}
 --- Load all Lua plugins from a directory
 --- @param dir string
 function YuchinNVIM.get_plugin(dir)
+	-- resolve directory relative to current script
+	local script_dir = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
+	local abs_dir = script_dir .. dir:gsub("^%./", "")
+
+	-- normalize path (remove trailing /)
+	abs_dir = abs_dir:gsub("/$", "")
+
+	-- add to package.path
+	package.path = package.path .. ";" .. abs_dir .. "/?.lua;" .. abs_dir .. "/?/init.lua"
+
+	print("Search path added: " .. abs_dir)
+
 	local current_file = debug.getinfo(1, "S").source:sub(2)
 	local p = io.popen('find "' .. dir .. '" -type f -name "*.lua"')
 	if not p then
@@ -53,7 +65,7 @@ function YuchinNVIM.get_plugin(dir)
 		if file ~= current_file then
 			-- Convert to module name
 			local mod = file:gsub("%.lua$", ""):gsub("^%./", ""):gsub("/", ".")
-            print(mod)
+			print(mod)
 			local ok, module = pcall(require, string.format(mod))
 			if ok then
 				local plugin = YuPlugin.new(mod, module, true)
@@ -72,7 +84,7 @@ end
 -- Example usage
 ------------------------------------------------------------
 
-YuchinNVIM.get_plugin("req")
+YuchinNVIM.get_plugin("../req")
 
 for _, plugin in ipairs(YuchinNVIM.plugin) do
 	plugin:info()
@@ -81,5 +93,3 @@ end
 print(YuchinNVIM.plugin[2].name)
 print(YuchinNVIM.plugin[2].module.a)
 print(YuchinNVIM.plugin[2].is_active)
-
-

@@ -1,4 +1,3 @@
-require("core.keymap")
-require("core.basic")
-require("core.autocmd")
-
+require "core.keymap"
+require "core.basic"
+require "core.autocmd"
