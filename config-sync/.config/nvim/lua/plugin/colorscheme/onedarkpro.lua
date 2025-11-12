@@ -1,6 +1,7 @@
 -- theme plugin
 return {
     "olimorris/onedarkpro.nvim",
+    enabled = true,
     opts = {
         options = {
             transparency = true,

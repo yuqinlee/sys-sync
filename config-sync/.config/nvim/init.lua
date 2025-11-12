@@ -1,2 +1,2 @@
-require "core.init"
-require "plugin.init"
+require "core"
+require "plugin"

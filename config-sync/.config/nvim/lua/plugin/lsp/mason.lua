@@ -13,6 +13,7 @@ return {
         require("mason").setup(opts)
         local registry = require "mason-registry"
 
+        -- 设置 lsp
         local function setup(name, config)
             -- registry.get_package("lua-language-server") 方法返回可能传入参数有问题
             -- 因此这里使用 pcall 去做判断，仅当存在这个包且未安装才进行 install

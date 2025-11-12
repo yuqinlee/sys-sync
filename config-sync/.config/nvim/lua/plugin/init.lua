@@ -24,5 +24,10 @@ require("lazy").setup {
         { import = "plugin.lang" },
         { import = "plugin.colorscheme" },
     },
+    -- Configure any other settings here. See the documentation for more details.
+    -- colorscheme that will be used when installing plugins.
+    install = { colorscheme = { "onedarkpro" } },
+    -- automatically check for plugin updates
+    checker = { enabled = false },
     lockfile = vim.fn.stdpath "config" .. "/lua/plugin/lazy-lock.json",
 }
