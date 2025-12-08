@@ -1,5 +1,24 @@
 # README
 
+系统同步配置 `sys-sync` 项目放置路径
+
+```bash
+~/.local/data/data-sync/public/sys-sync
+```
+```bash
+sys-sync master ➜ tree -L 2
+ .
+├──  config-sync               # .config 配置文件
+│   ├──  etc                   # /etc 配置文件
+│   ├──  stow-off.sh           # 取消 stow 对 .config 的连接
+│   └──  stow-on.sh            # 开启 stow 对 .config 的连接
+├──  LICENSE
+├──  package.list
+├── 󰂺 README.md
+└──  script-sync               # 系统使用的脚本
+    └──  keepass.sh
+```
+
 ## 通用
 
 - zsh                       shell
@@ -32,6 +51,8 @@
 - btop                      进程管理tui
 - isd                       systemd tui
 - impala                    iwctl tui
+- wofi                      程序起动器
+- fuzzel                    程序起动器
 
 ## aur 软件包
 
