@@ -6,10 +6,9 @@ function wget() {
 # yazi wrapper
 function f() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-    yazi "$@" --cwd-file="$tmp"
-    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        builtin cd -- "$cwd" || exit
-    fi
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd <"$tmp"
+    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd" || exit
     rm -f -- "$tmp"
 }
 
@@ -22,8 +21,8 @@ pon() {
 pof() {
     unset http_proxy https_proxy ALL_PROXY
 }
-PROXY_ICON_ON=""     # nf-fa-globe
-PROXY_ICON_OFF=""    # nf-md-lan_disconnect
+PROXY_ICON_ON=""  # nf-fa-globe
+PROXY_ICON_OFF="" # nf-md-lan_disconnect
 proxy_status() {
     if [[ -n "$http_proxy" || -n "$HTTP_PROXY" ]]; then
         echo "%F{green}$PROXY_ICON_ON%f"
@@ -31,12 +30,14 @@ proxy_status() {
         echo "%F{red}$PROXY_ICON_OFF%f"
     fi
 }
-precmd() {
-    RPROMPT="$(proxy_status)"
-}
+# precmd() {
+#     RPROMPT="$(proxy_status)"
+# }
 
 # source out env
-SCRIPT_DIR=$(cd "$(dirname "$0")" || exit 1; pwd)
+SCRIPT_DIR=$(
+    cd "$(dirname "$0")" || exit 1
+    pwd
+)
 
 [ -f "$SCRIPT_DIR/func.opt.sh" ] && . "$SCRIPT_DIR/func.opt.sh"
-
