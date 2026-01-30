@@ -17,7 +17,6 @@ require("lazy").setup {
     spec = {
         { import = "plugin.ui" },
         { import = "plugin.treesitter" },
-        { import = "plugin.lsp" },
         { import = "plugin.tools" },
         { import = "plugin.editor" },
         { import = "plugin.git" },

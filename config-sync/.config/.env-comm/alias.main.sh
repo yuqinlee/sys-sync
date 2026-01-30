@@ -8,7 +8,10 @@ alias ff='fastfetch'
 alias ls='eza -Bbh --icons=auto'
 alias l='eza -lBbgh --icons=auto'
 alias ll='eza -lBbgha --icons=auto'
-alias tree="exa --tree --icons"
+alias tree="eza --tree --icons"
+
+# grep
+alias grep='grep --color=auto'
 
 # python
 alias py='python'

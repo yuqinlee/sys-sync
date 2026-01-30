@@ -1,37 +1,62 @@
 -- 语法树分析
 return {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    event = "VeryLazy",
-    opts = {
-        ensure_installed = { "lua", "toml", "python" },
-        highlight = { enable = true },
-    },
-    config = function()
-        local nvim_treesitter = require "nvim-treesitter"
-        nvim_treesitter.setup()
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  event = { "BufReadPost", "BufNewFile" },
+  config = function()
+    require("nvim-treesitter").setup({
+      ensure_installed = {
+        "lua",
+        "vim",
+        "vimdoc",
+        "bash",
+        "json",
+        "toml",
+        "yaml",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "java",
+        "sql",
+      },
 
-        local ensure_installed = { "lua", "toml" }
-        local pattern = {}
-        for _, parser in ipairs(ensure_installed) do
-            -- neovim 自己的 api，找不到这个 parser 会报错
-            local has_parser, _ = pcall(vim.treesitter.language.inspect, parser)
+      -- 有 parser 缺失时自动安装
+      auto_install = true,
 
-            if not has_parser then
-                -- install 是 nvim-treesitter 的新 api，默认情况下无论是否安装 parser 都会执行，所以这里我们做一个判断
-                nvim_treesitter.install(parser)
-            else
-                -- 新版本需要手动启动高亮，但没有安装相应 parser会导致报错
-                pattern = vim.tbl_extend("keep", pattern, vim.treesitter.language.get_filetypes(parser))
-            end
-        end
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = pattern,
-            callback = function()
-                vim.treesitter.start()
-            end,
-        })
-        -- VeryLazy 晚于 FileType，所以需要手动触发一下
-        vim.api.nvim_exec_autocmds("FileType", {})
-    end,
+      -- 安装时使用 git（比 curl 稳定）
+      prefer_git = true,
+
+      highlight = {
+        enable = true,
+
+        -- 避免大文件卡死
+        disable = function(lang, buf)
+          local max_filesize = 200 * 1024 -- 200 KB
+          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+          if ok and stats and stats.size > max_filesize then
+            return true
+          end
+        end,
+
+        -- 如果你用传统 syntax，也可以关掉
+        additional_vim_regex_highlighting = false,
+      },
+
+      indent = {
+        enable = true,
+        disable = { "yaml" }, -- yaml 缩进偶尔抽风
+      },
+
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          node_decremental = "grm",
+          scope_incremental = "grc",
+        },
+      },
+    })
+  end,
 }
+

@@ -34,8 +34,8 @@
     },
 
     "tray": {
-        "icon-size": 21,
-        "spacing": 10
+        "icon-size": 20,
+        "spacing": 8
     },
 
     "clock": {
@@ -95,7 +95,7 @@
         "format": "{icon}  {volume}%",
         "tooltip": false,
         "format-muted": "  Muted",
-        "on-click": "pamixer -t",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-scroll-up": "pamixer -i 1",
         "on-scroll-down": "pamixer -d 1",
         "scroll-step": 5,

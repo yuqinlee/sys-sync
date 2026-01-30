@@ -29,7 +29,7 @@ inotifywait -m -e close_write "$LOCAL" | while read -r path _ file; do
     notify "冲突：远程文件已被修改，本地保存失败！请手动处理。"
     # 可考虑自动备份
     cp "$LOCAL" "$LOCAL.conflict.$(date +%s)"
-  else
+  else 
     echo "Pushing changes..."
     rclone copy "$LOCAL" "$REMOTE"
     notify "已成功推送到坚果云"
