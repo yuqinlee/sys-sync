@@ -1,8 +1,8 @@
 # =============================================================================
 #                       导入通用 shell 环境
 # =============================================================================
-[[ -s "$XDG_CONFIG_HOME/.env-comm/alias.main.sh" ]] && source "$XDG_CONFIG_HOME/.env-comm/alias.main.sh"
-[[ -s "$XDG_CONFIG_HOME/.env-comm/func.main.sh"  ]] && source "$XDG_CONFIG_HOME/.env-comm/func.main.sh"
+[[ -s "$XDG_CONFIG_HOME/.common/shell/alias.main.sh" ]] && source "$XDG_CONFIG_HOME/.common/shell/alias.main.sh"
+[[ -s "$XDG_CONFIG_HOME/.common/shell/func.main.sh"  ]] && source "$XDG_CONFIG_HOME/.common/shell/func.main.sh"
 
 # =============================================================================
 #                           基本设置
@@ -47,7 +47,7 @@ zstyle ':znap:*' repos-dir "$PLUGIN_HOME"
 znap source zsh-users/zsh-completions
 # fzf-tab
 # it must be load before zsh-autosuggestions and so on
-# run cmd: `fzf --zsh > "$XDG_CONFIG_HOME"/zsh/fzf.zsh` after installed fzf
+# run cmd: `fzf --zsh > "$XDG_CONFIG_HOME"/zsh/external/fzf.zsh` after installed fzf
 # source "$XDG_CONFIG_HOME"/zsh/.fzf.zsh
 # ctrl+t: search file
 # alt+c: search file and cd to dir
@@ -68,5 +68,5 @@ znap eval zoxide "zoxide init zsh --cmd cd"     # zoxide
 # =============================================================================
 #                       zsh 外部依赖
 # =============================================================================
-source "$XDG_CONFIG_HOME"/zsh/.fzf.zsh # fzf 按键绑定
+source "$XDG_CONFIG_HOME"/zsh/external/fzf.zsh # fzf 按键绑定
 

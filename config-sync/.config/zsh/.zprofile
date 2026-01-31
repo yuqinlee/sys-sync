@@ -1,3 +1,3 @@
 # load environment
-[ -f "$HOME/.config/.env-comm/env.main.sh" ] && . "$HOME/.config/.env-comm/env.main.sh"
+[ -f "$HOME/.config/.common/shell/env.main.sh" ] && . "$HOME/.config/.common/shell/env.main.sh"
 
