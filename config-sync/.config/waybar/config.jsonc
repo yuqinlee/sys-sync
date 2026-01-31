@@ -43,6 +43,7 @@
         "format": "{:%a %m/%d %H:%M:%S}",
         "interval": 1,
         "rotate": 0,
+        "tooltip":false,
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",
@@ -85,8 +86,8 @@
     "bluetooth": {
         "tooltip": false,
         "format": "{status}",
-        "format-disabled": "", // an empty format will hide the module
-        "on-click": "blueman-manager",
+        "format-disabled": "off", // an empty format will hide the module
+        "on-click-right": "blueman-manager",
         "format-connected": " {num_connections}",
         "tooltip-format": " {device_alias}",
         "tooltip-format-connected": "{device_enumerate}",
@@ -118,6 +119,7 @@
         "format": "{format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "  Muted",
+        "format-source-unavailable":"",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+",
