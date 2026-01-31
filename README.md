@@ -160,4 +160,8 @@ openssh
 git
 brightnessctl       亮度控制
 ddcutil             ddc接口显示器亮度控制
+xdg-desktop-portal   接口
+xdg-desktop-portal-hyprland 实现
+xdg-desktop-portal-termfilechooser yazi
+aur/xdg-desktop-portal-termfilechooser-hunkyburrito-git
 
