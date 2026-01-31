@@ -159,3 +159,4 @@ lua
 openssh
 git
 brightnessctl   亮度控制
+
