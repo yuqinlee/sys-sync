@@ -24,6 +24,7 @@
     ],
 
     "hyprland/window": {
+        "tooltip":false,
         "format": "  {initialTitle}"
     },
     
@@ -35,8 +36,8 @@
     },
 
     "tray": {
-        "icon-size": 18,
-        "spacing": 8
+        "icon-size": 20,
+        "spacing": 6
     },
 
     "clock": {
@@ -119,7 +120,7 @@
         "format": "{format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "  Muted",
-        "format-source-unavailable":"",
+        "format-source-unavailable":"unable",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+",
