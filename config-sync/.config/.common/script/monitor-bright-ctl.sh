@@ -2,6 +2,7 @@
 # depend on
 # - brightness
 # - ddcutil
+# ddcutil 需要 DDC/CI 支持，亮度调节使用VCP接口，一般显示器带有，电视不一定有
 
 STEP=10
 
