@@ -178,3 +178,6 @@ steam
     - https://wiki.archlinuxcn.org/wiki/Steam
     -  ttf-liberation
 
+Hyprpolkitagent
+
+
