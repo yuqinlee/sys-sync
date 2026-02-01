@@ -85,17 +85,14 @@
 
     "bluetooth": {
         "tooltip": false,
-        "format": "{status}",
-        "format-disabled": "off", // an empty format will hide the module
+        "format": " {status}",
+        "format-disabled": "󰂲", // an empty format will hide the module
         "on-click-right": "blueman-manager",
-        "format-connected": " {num_connections}",
-        "tooltip-format": " {device_alias}",
-        "tooltip-format-connected": "{device_enumerate}",
-        "tooltip-format-enumerate-connected": " {device_alias}"
+        "format-connected": "󰂱 {num_connections}"
     },
 
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
+        "format": "{icon} {volume}%",
         "tooltip": false,
         "format-muted": "  Muted",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
@@ -153,13 +150,17 @@
 
     "network": {
         "tooltip": true,
-        "format-wifi": "  {essid}",
+        // "format-wifi": "  {essid}",
+        // 使用 {icon} 来调用 format-icons 里的图标
+        "format-wifi": "{icon}  {essid}",
         "format-ethernet": "󰈀 ",
         "format-linked": "󰈀 {ifname} (No IP)",
-        "format-disconnected": "󰖪 ",
+        "format-disconnected": "󰤭",
         "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
         "tooltip-format-disconnected": "Disconnected",
-        "format-alt": "  {essid} <span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+        "format-alt": "{icon} {essid} <span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+        // 强度图标组：从 0% 到 100% 自动映射
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
         "interval": 2
     }
 }
