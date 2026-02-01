@@ -158,12 +158,23 @@ cn源
 lua
 openssh
 git
+
 brightnessctl       亮度控制
 ddcutil             ddc接口显示器亮度控制
+
 xdg-desktop-portal   接口
 xdg-desktop-portal-hyprland 实现
 xdg-desktop-portal-termfilechooser yazi
 aur/xdg-desktop-portal-termfilechooser-hunkyburrito-git
+    - firefox about:config xdg-desktop-portal.file-picker 修改为1
+    - systemctl --user restart xdg-desktop-portal.service
+
 hyprshot   截图 Hyprland screenshot utility
+
 wechat
 qbittorrant-nox     web界面，systemctl start qbittorrant-nox 启动，软件安装过程中会自动创建 qbt 用户
+
+steam
+    - https://wiki.archlinuxcn.org/wiki/Steam
+    -  ttf-liberation
+
