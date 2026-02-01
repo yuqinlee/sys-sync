@@ -176,7 +176,7 @@ qbittorrant-nox     web界面，systemctl start qbittorrant-nox 启动，软件�
 
 steam
     - https://wiki.archlinuxcn.org/wiki/Steam
-    -  ttf-liberation
+    - ttf-liberation
 
 Hyprpolkitagent
 
