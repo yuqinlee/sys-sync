@@ -179,5 +179,5 @@ steam
     - ttf-liberation
 
 Hyprpolkitagent
-
+fastfetch
 
