@@ -180,4 +180,5 @@ steam
 
 Hyprpolkitagent
 fastfetch
+hyprlock
 
