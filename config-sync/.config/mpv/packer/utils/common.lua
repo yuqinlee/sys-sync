@@ -1,10 +1,12 @@
+SysEnum = require "enum.SysEnum"
+
 local utils = {}
 
--- 判断什么系统
+-- get what current os
 function utils.get_os()
     -- Windows
     if package.config:sub(1,1) == '\\' then
-        return "windows"
+        return SysEnum.windows
     end
 
     -- Unix-like
@@ -13,15 +15,14 @@ function utils.get_os()
         local uname = f:read("*l")
         f:close()
         if uname == "Darwin" then
-            return "macos"
+            return SysEnum.macos
         elseif uname == "Linux" then
-            return "linux"
+            return SysEnum.macos
         else
-            return "unix"
+            return nil
         end
     end
-
-    return "unknown"
+    return nil
 end
 
 return utils
