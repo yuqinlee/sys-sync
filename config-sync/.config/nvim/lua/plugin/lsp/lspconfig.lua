@@ -9,7 +9,6 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"pylsp",
-					"cssls",
 					"html",
 				},
 				automatic_enable = {
