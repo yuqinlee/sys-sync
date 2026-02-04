@@ -1,3 +1,4 @@
+-- 粘贴图片从系统剪切板
 return {
     "HakonHarnes/img-clip.nvim",
     ft = { "tex", "markdown", "typst" },
