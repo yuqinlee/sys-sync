@@ -3,31 +3,22 @@
 系统同步配置 `sys-sync` 项目放置路径
 
 ```bash
-~/.local/data/data-sync/public/sys-sync
-```
-```bash
-sys-sync master ➜ tree -L 2
- .
-├──  config-sync               # .config 配置文件
-│   ├──  etc                   # /etc 配置文件
-│   ├──  stow-off.sh           # 取消 stow 对 .config 的连接
-│   └──  stow-on.sh            # 开启 stow 对 .config 的连接
+ /data/data-exchange/sync/public/sys-sync
+├── 󰊢 .gitignore
+├──  config-sync
+│   ├──  .config
+│   ├── 󱆃 .zshenv
+│   ├──  etc
+│   ├──  stow-off.sh
+│   └──  stow-on.sh
 ├──  LICENSE
-├──  package.list
-├── 󰂺 README.md
-└──  script-sync               # 系统使用的脚本
-    └──  keepass.sh
+└── 󰂺 README.md
 ```
 
-## 系统安装
-
+## 基本依赖
 - btrfs-progs               默认 arch 没有安装此包，不安装有 no fsck helpers found
-
 - udiskie
 - ntfs-3g
-- wl-paste
-- cliphist
-- speech-dispatcher         语音合成相关，firefox使用
 
 ## 网络与软件源
 
@@ -36,19 +27,18 @@ sys-sync master ➜ tree -L 2
 - dhcpc
 - iwd
     - systemctl enable --now dhcpcd iwd
--networkmanager
+- networkmanager
     - systemctl enable --now iwd            使用 nm+iwd 即可，dhcpcd与nm不兼容
-```bash
-sudo mkdir -p /etc/NetworkManager/conf.d
-sudo nano /etc/NetworkManager/conf.d/wifi_backend.conf # 配置iwd作为nm 后端
+    ```bash
+    sudo mkdir -p /etc/NetworkManager/conf.d
+    sudo nano /etc/NetworkManager/conf.d/wifi_backend.conf # 配置iwd作为nm 后端
 
-[device]
-wifi.backend=iwd
+    [device]
+    wifi.backend=iwd
 
-sudo systemctl disable --now wpa_supplicant # nm 默认是依赖wpa的，卸载不了，移除服务
-ps -ef | grep -E 'iwd|wpa_supplicant' # 查看是否使用 iwd作为后端
-
-```
+    sudo systemctl disable --now wpa_supplicant # nm 默认是依赖wpa的，卸载不了，移除服务
+    ps -ef | grep -E 'iwd|wpa_supplicant' # 查看是否使用 iwd作为后端
+    ```
     - nmcli
     - nmtui
     - network-manager-applet # nm-applet &
@@ -112,7 +102,7 @@ cn源
 ## 通用
 
 - zsh                       shell
-    - starship              通用 prompt 配置 https://starship.rs/zh-CN/
+- starship              通用 prompt 配置 https://starship.rs/zh-CN/
 - kitty                     终端模拟器
 - foot                      终端模拟器
 - neovim                    文本编辑器
@@ -124,16 +114,6 @@ cn源
 - yazi                      文件管理器
     - trash-cli             文件回收站
 - keyd                      按键映射工具
-
-
-## 窗口管理
-
-- hyprland                  窗口管理器
-- hyprpaper                 壁纸
-- waybar                    状态栏
-
-## TUI
-
 - bluetui                   蓝牙管理tui
 - pulsemixer                音频管理tui
 - lazygit                   git管理tui
@@ -143,43 +123,47 @@ cn源
 - impala                    iwctl tui
 - wofi                      程序起动器
 - fuzzel                    程序起动器
+- wl-paste
+- cliphist
+- speech-dispatcher         语音合成相关，firefox使用
+- fastfetch
 
+- qbittorrant-nox     web界面，systemctl start qbittorrant-nox 启动，软件安装过程中会自动创建 qbt 用户
+- syncthing
+- kleopatra
+- brightnessctl       亮度控制
+- ddcutil             ddc接口显示器亮度控制
+
+- lua
+- openssh
+- git
+
+
+## hypr 生态
+- waybar                    状态栏
+- hyprland                  窗口管理器
+- hyprpaper                 壁纸
+- hyprpolkitagent           权限认证
+- hyprlock                  锁屏
+- hypridle                  idel
+- hyprshot                  截图
+- xdg-desktop-portal          接口
+- xdg-desktop-portal-hyprland 实现
+- aur/xdg-desktop-portal-termfilechooser-hunkyburrito-git
+    - firefox about:config xdg-desktop-portal.file-picker 修改为1
+    - systemctl --user restart xdg-desktop-portal.service
 ## aur 软件包
 
 - zotero                    文献管理
+- wechat                    微信
+- QQ                        qq
 
 ---
 
-- syncthing
-- kleopatra
-
----
-
-lua
-openssh
-git
-
-brightnessctl       亮度控制
-ddcutil             ddc接口显示器亮度控制
-
-xdg-desktop-portal   接口
-xdg-desktop-portal-hyprland 实现
-xdg-desktop-portal-termfilechooser yazi
-aur/xdg-desktop-portal-termfilechooser-hunkyburrito-git
-    - firefox about:config xdg-desktop-portal.file-picker 修改为1
-    - systemctl --user restart xdg-desktop-portal.service
-
-hyprshot   截图 Hyprland screenshot utility
-
-wechat
-qbittorrant-nox     web界面，systemctl start qbittorrant-nox 启动，软件安装过程中会自动创建 qbt 用户
-
-steam
-    - https://wiki.archlinuxcn.org/wiki/Steam
-    - ttf-liberation
-
-Hyprpolkitagent
-fastfetch
-hyprlock
-hypridle
-
+`/etc/systemd/logind.conf` 配置笔记本盒盖关机
+```conf
+# 笔记本合盖即关机
+HandleLidSwitch=lock
+HandleLidSwitchExternalPower=lock
+HandleLidSwitchDocked=ignore
+```
