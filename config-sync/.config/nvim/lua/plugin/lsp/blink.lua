@@ -5,9 +5,6 @@ return {
 		"rafamadriz/friendly-snippets",
 		"Kaiser-Yang/blink-cmp-avante",
 	},
-	version = "*",
-	---@module 'blink.cmp'
-	---@type blink.cmp.Config
 	opts = {
 		cmdline = {
 			keymap = {
@@ -31,7 +28,7 @@ return {
 		},
 		keymap = {
 			preset = "none",
-			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+			["<leader>Tab"] = { "show", "show_documentation", "hide_documentation" },
 			-- fallback命令将运行下一个非闪烁键盘映射(回车键的默认换行等操作需要)
 			["<CR>"] = { "accept", "fallback" }, -- 更改成'select_and_accept'会选择第一项插入
 			["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
