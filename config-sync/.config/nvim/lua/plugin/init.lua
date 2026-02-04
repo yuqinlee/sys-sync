@@ -21,6 +21,7 @@ require("lazy").setup {
         { import = "plugin.editor" },
         { import = "plugin.git" },
         { import = "plugin.lang" },
+        { import = "plugin.lsp" },
         { import = "plugin.colorscheme" },
     },
     -- Configure any other settings here. See the documentation for more details.

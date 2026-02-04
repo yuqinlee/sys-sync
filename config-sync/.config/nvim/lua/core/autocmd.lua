@@ -1,3 +1,5 @@
+local utils = require "core.utils"
+
 -- 自动保存
 local function clear_cmdarea()
     vim.defer_fn(function()
@@ -62,7 +64,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 })
 
 -- fcitx5 输入法切换
-if vim.fn.has "unix" == 1 and vim.fn.executable "fcitx5-remote" == 1 then
+if (utils.system.is_linux or utils.system.is_macos) and vim.fn.executable "fcitx5-remote" == 1 then
     local fcitx5_last_status = tonumber "1"
 
     -- insert 模式进入任何模式都会切换英文并记录原状态
