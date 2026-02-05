@@ -134,6 +134,8 @@ cn源
 - brightnessctl       亮度控制
 - ddcutil             ddc接口显示器亮度控制
 
+- less
+
 - lua
 - openssh
 - git
