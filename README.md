@@ -121,6 +121,7 @@ cn源
 - btop                      进程管理tui
 - isd                       systemd tui
 - impala                    iwctl tui
+- calcurse                  TUI 日历
 - wofi                      程序起动器
 - fuzzel                    程序起动器
 - wl-paste
