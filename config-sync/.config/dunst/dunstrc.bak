@@ -17,33 +17,34 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = keyboard
 
     ### Geometry ###
 
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 500
+    width = 400
 
     # The maximum height of a single notification, excluding the frame.
-    height = 300
+    height = 900
 
     # Position the notification in the top right corner
     origin = top-right
+    #origin = top-center
 
     # Offset from the origin
-    offset = 20x20
+    offset = 10x10
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 20
+    notification_limit = 30
 
     ### Progress bar ###
 
-    # Turn on the progess bar. It appears when a progress hint is passed with
+    # Turn on the progress bar. It appears when a progress hint is passed with
     # for example dunstify -h int:value:12
     progress_bar = true
 
@@ -52,19 +53,27 @@
     progress_bar_height = 10
 
     # Set the frame width of the progress bar
-    progress_bar_frame_width = 0
+    progress_bar_frame_width = 1
 
     # Set the minimum width for the progress bar
-    progress_bar_min_width = 125
+    progress_bar_min_width = 150
 
     # Set the maximum width for the progress bar
-    progress_bar_max_width = 250
+    progress_bar_max_width = 300
 
     # Corner radius for the progress bar. 0 disables rounded corners.
-    progress_bar_corner_radius = 4
+    progress_bar_corner_radius = 0
+
+    # Define which corners to round when drawing the progress bar. If progress_bar_corner_radius
+    # is set to 0 this option will be ignored.
+    progress_bar_corners = all
 
     # Corner radius for the icon image.
-    icon_corner_radius = 5
+    icon_corner_radius = 0
+
+    # Define which corners to round when drawing the icon image. If icon_corner_radius
+    # is set to 0 this option will be ignored.
+    icon_corners = all
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
@@ -73,7 +82,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 10
+    transparency = 0
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -88,20 +97,20 @@
     horizontal_padding = 8
 
     # Padding between text and icon.
-    text_icon_padding = 10
+    text_icon_padding = 0
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 2
 
     # Defines color of the frame around the notification window.
-    # frame_color = "#eba0ac"
+    frame_color = "#3399ff"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 5
+    gap_size = 0
 
     # Define a color for the separator.
     # possible values are:
@@ -109,9 +118,14 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = auto
+    separator_color = frame
 
-    # Sort messages by urgency.
+    # Sort type.
+    # possible values are:
+    #  * id: sort by id
+    #  * urgency_ascending: sort by urgency (low then normal then critical)
+    #  * urgency_descending: sort by urgency (critical then normal then low)
+    #  * update: sort by update (most recent always at the top)
     sort = yes
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
@@ -123,11 +137,11 @@
 
     ### Text ###
 
-    font = mononoki Nerd Font 16
+    font = SourceCodePro 12
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
-    line_height = 3
+    line_height = 0
 
     # Possible values are:
     # full: Allow a small subset of html markup in notifications:
@@ -163,7 +177,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "󰟪 %a\n<b>󰋑 %s</b>\n%b"
+    format = "<b>%s</b>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -198,12 +212,12 @@
 
     # Recursive icon lookup. You can set a single theme, instead of having to
     # define all lookup paths.
-    #enable_recursive_icon_lookup = true
+    enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    #icon_theme = Adwaita
+    icon_theme = Adwaita
     # You can also set multiple icon themes, with the leftmost one being used first.
-    icon_theme = "Tela-circle-dracula"
+    # icon_theme = "Adwaita, breeze"
 
     # Align icons left/right/top/off
     icon_position = left
@@ -216,14 +230,14 @@
     # Scale larger icons down to this size, set to 0 to disable
     max_icon_size = 128
 
-    # Paths to default icons (only neccesary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/Tela-circle-dracula/16/actions:/usr/share/icons/Tela-circle-dracula/16/apps:/usr/share/icons/Tela-circle-dracula/16/devices:/usr/share/icons/Tela-circle-dracula/16/mimetypes:/usr/share/icons/Tela-circle-dracula/16/panel:/usr/share/icons/Tela-circle-dracula/16/places:/usr/share/icons/Tela-circle-dracula/16/status
+    # Paths to default icons (only necessary when not using recursive icon lookup)
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
     ### History ###
 
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
-    sticky_history = yes
+    sticky_history = no
 
     # Maximum amount of notifications kept in history
     history_length = 20
@@ -231,7 +245,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/rofi -dmenu -p dunst:
+    dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -239,10 +253,10 @@
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
 
-    # Define the title of the windows spawned by dunst
+    # Define the title of the windows spawned by dunst (X11 only)
     title = Dunst
 
-    # Define the class of the windows spawned by dunst
+    # Define the class of the windows spawned by dunst (X11 only)
     class = Dunst
 
     # Define the corner radius of the notification window
@@ -250,7 +264,14 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 10
+    corner_radius = 0
+
+    # Define which corners to round when drawing the window. If the corner radius
+    # is set to 0 this option will be ignored.
+    #
+    # Comma-separated list of the corners. The accepted corner values are bottom-right,
+    # bottom-left, top-right, top-left, top, bottom, left, right or all.
+    corners = all
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -261,7 +282,7 @@
     ### Wayland ###
     # These settings are Wayland-specific. They have no effect when using X11
 
-    # Uncomment this if you want to let notications appear under fullscreen
+    # Uncomment this if you want to let notifications appear under fullscreen
     # applications (default: overlay)
     # layer = top
 
@@ -295,7 +316,7 @@
     # * context_all: Open context menu for all notifications.
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
-    mouse_left_click = context, close_current
+    mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
 
@@ -308,6 +329,35 @@
     # using the resolution and physical size. This might be useful in setups
     # where there are multiple screens with very different dpi values.
     per_monitor_dpi = false
+
+
+[urgency_low]
+    # IMPORTANT: colors have to be defined in quotation marks.
+    # Otherwise the "#" and following would be interpreted as a comment.
+    background = "#222222"
+    foreground = "#ffffff"
+    frame_color= "#dda215"
+    timeout = 10
+    # Icon for notifications with low urgency, uncomment to enable
+    #default_icon = /path/to/icon
+
+[urgency_normal]
+    background = "#222222"
+    foreground = "#ffffff"
+    frame_color = "#a8557a"
+    timeout = 10
+    override_pause_level = 30
+    # Icon for notifications with normal urgency, uncomment to enable
+    #default_icon = /path/to/icon
+
+[urgency_critical]
+    background = "#222222"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0
+    override_pause_level = 60
+    # Icon for notifications with critical urgency, uncomment to enable
+    #default_icon = /path/to/icon
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -343,6 +393,7 @@
 #    ellipsize
 #    alignment
 #    hide_text
+#    override_pause_level
 #
 # Shell-like globbing will get expanded.
 #
@@ -350,6 +401,10 @@
 # GLib based applications export their desktop-entry name. In comparison to the appname,
 # the desktop-entry won't get localized.
 #
+# You can also allow a notification to appear even when paused. Notification will appear whenever notification's override_pause_level >= dunst's paused level.
+# This can be used to set partial pause modes, where more urgent notifications get through, but less urgent stay paused. To do that, you can override the following in the rules:
+# override_pause_level = X
+
 # SCRIPTING
 # You can specify a script that gets run when the rule matches by
 # setting the "script" option.
@@ -432,34 +487,3 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
-
-[Type-1]
-    summary = "t1"
-    format = "<b>%a</b>"
-
-[Type-2]
-    summary = "t2"
-    format = "<span size="250%">%a</span>\n%b"
-
-[urgency_critical]
-    background = "#f5e0dc"
-    foreground = "#1e1e2e"
-    frame_color = "#f38ba8"
-    icon = "~/.config/dunst/icons/critical.svg"
-    timeout = 0
-    # Icon for notifications with critical urgency, uncomment to enable
-    #default_icon = /path/to/icon
-
-[urgency_low]
-    background = "#253845"
-    foreground = "#3F4252"
-    frame_color = "#3F4252"
-    icon = "~/.config/dunst/icons/hyprdots.svg"
-    timeout = 10
-
-[urgency_normal]
-    background = "#1D202E"
-    foreground = "#AD584F"
-    frame_color = "#AD584F"
-    icon = "~/.config/dunst/icons/hyprdots.svg"
-    timeout = 10
