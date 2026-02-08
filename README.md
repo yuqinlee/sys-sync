@@ -175,3 +175,13 @@ HandleLidSwitch=lock
 HandleLidSwitchExternalPower=lock
 HandleLidSwitchDocked=ignore
 ```
+
+idea 缩放问题
+
+`/opt/dev-kit/jetbrain/idea-IC-252.28539.33/bin`编辑
+
+```idea64.vmoptions
+-Dsun.java2d.uiScale.enabled=true
+-Dawt.toolkit.name=WLToolkit
+```
+> 目前使用 idea 25.2 版本上述解决方式输入法将无法切换中文，使用官方源的包安装后能正常运行输入法
