@@ -82,7 +82,7 @@ cn源
 
 ## 显卡（nvidia）
 
-驱动 
+驱动
 
 - linux-headers
 - nvidia-open
@@ -185,3 +185,25 @@ idea 缩放问题
 -Dawt.toolkit.name=WLToolkit
 ```
 > 目前使用 idea 25.2 版本上述解决方式输入法将无法切换中文，使用官方源的包安装后能正常运行输入法
+
+微信缩放问题
+
+```~/.Xresources
+
+! https://wiki.archlinux.org/title/HiDPI#X_Resources
+Xft.dpi: 256
+
+! These might also be useful depending on your monitor and personal preference:
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+```
+```bash
+# 安装 x11 依赖
+sudo pacman -S xorg-xrdb
+exec-once = xrdb -merge ~/.Xresources
+```
+
