@@ -102,7 +102,7 @@ cn源
 ## 通用
 
 - zsh                       shell
-- starship              通用 prompt 配置 https://starship.rs/zh-CN/
+  - starship                通用 prompt 配置 https://starship.rs/zh-CN/
 - kitty                     终端模拟器
 - foot                      终端模拟器
 - neovim                    文本编辑器
