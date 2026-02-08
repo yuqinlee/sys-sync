@@ -1,0 +1,17 @@
+! https://wiki.archlinux.org/title/HiDPI#X_Resources
+! xwayland 缩放解决方案
+! 1. 禁用hyprland 缩放
+! 2. 安装 xorg-utils
+! 3. 配置 Xresources
+! 4. 加载 x11 缩放
+! 放大2.67倍数（96*2.67）
+Xft.dpi: 256
+
+! These might also be useful depending on your monitor and personal preference:
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+Xcursor.size: 24
