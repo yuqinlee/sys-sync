@@ -207,3 +207,5 @@ sudo pacman -S xorg-xrdb
 exec-once = xrdb -merge ~/.Xresources
 ```
 
+解决 keepassxc 无法托盘
+sudo pacman -S qt5-wayland qt6-wayland
