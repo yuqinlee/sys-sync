@@ -135,6 +135,11 @@ cn源
 - brightnessctl       亮度控制
 - ddcutil             ddc接口显示器亮度控制
 
+- mpd                 音乐播放服务器守护进程
+- ncmpcpp             TUI 客户端
+- mpc                 CLI 客户端
+- ymuse               GUI 客户端
+
 - less
 
 - lua
