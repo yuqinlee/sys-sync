@@ -16,6 +16,7 @@
 ```
 
 ## 基本依赖
+
 - btrfs-progs               默认 arch 没有安装此包，不安装有 no fsck helpers found
 - udiskie
 - ntfs-3g
