@@ -5,7 +5,7 @@
 ! 3. 配置 Xresources
 ! 4. 加载 x11 缩放
 ! 放大2.67倍数（96*2.67）
-Xft.dpi: 256
+Xft.dpi: 120
 
 ! These might also be useful depending on your monitor and personal preference:
 Xft.autohint: 0
