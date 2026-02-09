@@ -201,11 +201,12 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 ```
+
 ```bash
 # 安装 x11 依赖
 sudo pacman -S xorg-xrdb
 exec-once = xrdb -merge ~/.Xresources
 ```
 
-解决 keepassxc 无法托盘
+qt与 wayland
 sudo pacman -S qt5-wayland qt6-wayland
