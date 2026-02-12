@@ -3,8 +3,8 @@ set -euo pipefail
 
 # cancel public config stow
 stow \
-    --target ~ . \
     -D \
+    --target ~ . \
     --ignore multi \
     --ignore etc \
     --ignore stow-on.sh \
