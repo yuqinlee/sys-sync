@@ -8,7 +8,8 @@ stow \
     --ignore multi \
     --ignore etc \
     --ignore stow-on.sh \
-    --ignore stow.off.sh \
+    --ignore stow-off.sh \
+    --ignore README.md \
 
 # multi device config stow
 HOST="$(uname -n)"
