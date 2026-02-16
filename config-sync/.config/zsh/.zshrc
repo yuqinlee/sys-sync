@@ -77,7 +77,7 @@ znap source zsh-users/zsh-completions
 # > 3. source "$XDG_CONFIG_HOME"/zsh/.fzf.zsh
 znap source Aloxaf/fzf-tab
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'   # preview directory's content with eza when completing cd
-zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept              # custom fzf flags
+zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2                                # custom fzf flags `fzf-flags --color=fg:1,fg+:2 --bind=tab:accept` 则使用 tab 选择
 zstyle ':fzf-tab:*' use-fzf-default-opts yes                                    # To make fzf-tab follow FZF_DEFAULT_OPTS.
 zstyle ':fzf-tab:*' switch-group '<' '>'                                        # switch group using `<` and `>`
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup                                  # If you're using tmux >= 3.2, we provide a script ftb-tmux-popup to make full use of it's "popup" feature.
