@@ -47,7 +47,7 @@ setopt INC_APPEND_HISTORY                   # 命令执行后立即写入历史�
 #
 # bindkey '^I' menu-complete
 #
-# > 原生补全使用 fzf 代替
+# > 原生补全使用 fzf-tab 代替
 
 # =============================================================================
 #                            插件 
@@ -60,7 +60,7 @@ fi
 source "$PLUGIN_HOME"/znap/znap.zsh  # Start Znap
 zstyle ':znap:*' repos-dir "$PLUGIN_HOME"
 
-# znap source zsh-users/zsh-completions
+znap source zsh-users/zsh-completions
 
 # fzf-tab
 # 1. it must be load before zsh-autosuggestions and so on
@@ -72,7 +72,7 @@ zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
@@ -94,15 +94,15 @@ znap source zdharma-continuum/fast-syntax-highlighting
 #                       Prompt & 工具初始化
 # =============================================================================
 # prompt powered by starship instead `znap prompt romkatv/powerlevel10k`
-znap eval startship "starship init zsh"         # starship
-znap eval zoxide "zoxide init zsh --cmd cd"     # zoxide
+znap eval startship "starship init zsh"                 # starship
+znap eval zoxide "zoxide init zsh --cmd cd"             # zoxide
 
 # =============================================================================
 #                           zsh 外部依赖
 # =============================================================================
-# ctrl+t: search file
-# alt+c: search file and cd to dir
-# ctrl+r: search history
-# ctrl+i: completions
-source "$XDG_CONFIG_HOME"/zsh/external/fzf.zsh # fzf 按键绑定
+# ctrl+t search file
+# alt+c  search file and cd to dir
+# ctrl+r search history
+# ctrl+i completions
+source "$XDG_CONFIG_HOME"/zsh/external/fzf.zsh          # fzf 按键绑定
 

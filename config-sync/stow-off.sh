@@ -16,5 +16,8 @@ HOST="$(uname -n)"
 STOW_DIR="./multi"
 
 if [[ -d "$STOW_DIR/$HOST" ]]; then
-    stow --dir "$STOW_DIR" --target "$HOME" -D "$HOST"
+    stow \
+        --dir "$STOW_DIR" \
+        --target "$HOME" \
+        --delete "$HOST"
 fi
