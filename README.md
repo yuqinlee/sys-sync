@@ -15,6 +15,15 @@
 └── 󰂺 README.md
 ```
 
+## 新增用户
+
+```bash
+
+sudo useradd -u 1024 -g 1024 -m -s /bin/zsh yuchin
+sudo usermod -aG wheel yuchin
+sudo passwd yuchin
+```
+
 ## 基本依赖
 
 - btrfs-progs               默认 arch 没有安装此包，不安装有 no fsck helpers found
