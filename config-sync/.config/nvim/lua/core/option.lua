@@ -4,15 +4,15 @@
 --                           advantage
 -- ============================================================================
 -- clipboard use system
-vim.opt.clipboard = "unnamedplus" 
+vim.opt.clipboard = "unnamedplus"
 -- mouse
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 -- allow mouse to be used in nvim
-vim.opt.mouse = "a" 
+vim.opt.mouse = "a"
 -- terminal color
 vim.opt.termguicolors = true -- enable 24-bit RGB color in the TUI
 -- make it case sensitive if an uppercase is entered
-vim.opt.smartcase = true 
+vim.opt.smartcase = true
 
 -- cmd line
 vim.opt.cmdheight = 1
@@ -55,7 +55,7 @@ vim.opt.autoread = true         -- file when modified externally
 --                               mode 
 -- ============================================================================
 -- lualine instead
-vim.opt.showmode = false 
+vim.opt.showmode = false
 
 -- virtual
 vim.opt.virtualedit = "block" -- `ctrl + v` make virtual mode over line end
