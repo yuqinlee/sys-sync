@@ -177,4 +177,31 @@ function Registry.treesitter_ensure()
     return result
 end
 
+------------------------------------------------
+-- 生成 nvim-lint 所需 linters_by_ft
+------------------------------------------------
+function Registry.nvim_lint_linters_by_ft()
+    local result = {}
+
+    for _, lang in pairs(raw) do
+        local lint = lang.lint
+        local fts = lang.meta and lang.meta.ft
+
+        if lint and fts then
+            for linter_name, linter_conf in pairs(lint) do
+                -- 必须 enable
+                -- 必须存在 opts.nvim_lint
+                if linter_conf.enable and linter_conf.opts and linter_conf.opts.nvim_lint then
+                    for _, ft in ipairs(fts) do
+                        result[ft] = result[ft] or {}
+                        table.insert(result[ft], linter_name)
+                    end
+                end
+            end
+        end
+    end
+
+    return result
+end
+
 return Registry

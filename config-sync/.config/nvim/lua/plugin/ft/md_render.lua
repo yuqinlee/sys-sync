@@ -2,7 +2,7 @@
 return {
     "MeanderingProgrammer/render-markdown.nvim",
     -- config from https://github.com/patricorgi/dotfiles/blob/main/.config/nvim/lua/custom/config/render-markdown.lua
-    lazy = true, -- 明确懒加载
+    -- ft = { "markdown" },
     keys = {
         {
             "<leader>mr",

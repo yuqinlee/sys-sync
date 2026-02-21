@@ -145,7 +145,13 @@ M.languages = {
             markdownlint = {
                 enable = true,
                 mason = true,
-                opts = {},
+                opts = {
+                    -- 这里使用了 nvim_lint 的是 cli 类 lint，而不是 lsp 类
+                    -- 置空就不会注册进 nvim-lint
+                    nvim_lint={
+                        cmd={"markdownlint"}
+                    }
+                },
             },
         },
 
