@@ -25,12 +25,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup {
     spec = {
         { import = "plugin.ui" },
-        { import = "plugin.tools" },
         { import = "plugin.editor" },
         { import = "plugin.git" },
         { import = "plugin.ft" },
         { import = "plugin.lsp" },
-        { import = "plugin.colorscheme" },
     },
 
     -- Configure any other settings here. See the documentation for more details.

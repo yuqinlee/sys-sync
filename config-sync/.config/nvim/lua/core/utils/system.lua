@@ -4,7 +4,7 @@ local system={
     -- Using vim.fn.api_info().version is no good either as api_info also consumes much time
     version = vim.fn.matchstr(vim.fn.execute "version", "NVIM v\\zs[^\\n]*"),
 
-    -- which system
+    -- get current system
     is_linux = vim.uv.os_uname().sysname == "Linux",
     is_mac = vim.uv.os_uname().sysname == "Darwin",
     is_windows = vim.uv.os_uname().sysname == "Windows_NT",

@@ -16,7 +16,10 @@ M.languages = {
                 mason = true, -- 是否使用 mason 安装
                 opts = {
                     Lua = {
-                        hint = { enable = true },
+                        hint = { -- Lua开启hints
+                            enable = true, -- necessary
+                        },
+                        -- 忽略掉vim配置时一些全局变量语言服务器找不到的警告
                         diagnostics = {
                             globals = { "vim", "require" },
                         },

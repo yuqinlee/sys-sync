@@ -1,3 +1,4 @@
+-- 文件管理器
 return {
     "mikavilpas/yazi.nvim",
     event = "VeryLazy",

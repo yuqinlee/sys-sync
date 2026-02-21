@@ -12,7 +12,17 @@ return {
             keymap = {
                 preset = "none",
 
-                ["<Tab>"] = { "accept", "fallback" },
+                ["<Tab>"] = {
+                    function(cmp)
+                        if cmp.is_visible() then
+                            return cmp.accept()
+                        else
+                            return cmp.show()
+                        end
+                    end,
+                    "fallback",
+                },
+
                 ["<S-Tab>"] = { "select_prev", "fallback" },
 
                 ["<C-j>"] = { "select_next", "fallback" },
@@ -31,6 +41,7 @@ return {
                         -- enable for inputs as well, with:
                         -- or vim.fn.getcmdtype() == '@'
                     end,
+                    auto_hide = false,
                 },
                 -- 不在当前行上显示所选项目的预览
                 ghost_text = { enabled = false },
@@ -78,6 +89,7 @@ return {
                 max_height = 10,
                 border = "single", -- Defaults to `vim.o.winborder` on nvim 0.11+
                 auto_show = true,
+                auto_hide = false,
             },
         },
 

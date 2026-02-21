@@ -1,9 +1,18 @@
 -- 渲染 markdown
 return {
     "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
     -- config from https://github.com/patricorgi/dotfiles/blob/main/.config/nvim/lua/custom/config/render-markdown.lua
-    ft = { "markdown", "Avante" },
+    lazy = true, -- 明确懒加载
+    keys = {
+        {
+            "<leader>mr",
+            function()
+                require("render-markdown").toggle()
+            end,
+            desc = "Toggle Markdown Render",
+            ft = { "markdown", "Avante" },
+        },
+    },
     opts = {
         callout = {
             abstract = {
