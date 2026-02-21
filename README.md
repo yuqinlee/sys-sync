@@ -79,7 +79,7 @@ sudo passwd yuchin
 - noto-fonts
 - noto-fonts-cjk
 
-- fcitx5-im
+- ## fcitx5-im
   - only install fcitx5
 - fcitx5-chinese-addons
 
@@ -222,4 +222,7 @@ exec-once = xrdb -merge ~/.Xresources
 ```
 
 qt与 wayland
+
+```bash
 sudo pacman -S qt5-wayland qt6-wayland
+```
