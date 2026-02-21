@@ -119,9 +119,85 @@ M.languages = {
             name = "markdown",
             ft = { "markdown" },
         },
+
+        lsp = {
+            marksman = {
+                enable = true,
+                mason = true,
+                opts = {},
+            },
+        },
+
+        formatter = {
+            prettier = {
+                enable = true,
+                mason = true,
+                opts = {
+                    conform = {
+                        fmt_ft = { "prettier" },
+                        lsp_fallback = false,
+                    },
+                },
+            },
+        },
+
+        lint = {
+            markdownlint = {
+                enable = true,
+                mason = true,
+                opts = {},
+            },
+        },
+
+        dap = {},
+
         treesitter = {
             enable = true,
             ensure_installed = { "markdown", "markdown_inline" },
+        },
+    },
+
+    shell = {
+        meta = {
+            name = "shell",
+            ft = { "sh", "bash", "zsh" },
+        },
+
+        lsp = {
+            -- bash-language-server
+            bashls = {
+                enable = true,
+                mason = true,
+                opts = {},
+            },
+        },
+
+        formatter = {
+            shfmt = {
+                enable = true,
+                mason = true,
+                opts = {
+                    conform = {
+                        fmt_ft = { "shfmt" },
+                        lsp_fallback = false,
+                    },
+                },
+            },
+        },
+
+        lint = {
+            shellcheck = {
+                enable = true,
+                mason = true,
+                opts = {},
+            },
+        },
+
+        dap = {},
+
+        treesitter = {
+            enable = true,
+            ensure_installed = { "bash" },
         },
     },
 }

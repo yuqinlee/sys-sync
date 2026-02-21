@@ -1,3 +1,6 @@
+# nvim
+alias v='nvim'
+
 # lazygit
 alias lg='lazygit'
 
