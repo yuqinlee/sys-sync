@@ -1,4 +1,4 @@
--- finds and lists all of the TODO, HACK, BUG, etc comment in your project and loads them into a browsable list.
+-- 高亮 TODO, HACK, BUG 等
 return {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },

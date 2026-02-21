@@ -1,4 +1,4 @@
-local raw = require("config.lan_enhance").languages
+local raw = require("lsp.lang_conf").languages
 
 local Registry = {}
 
@@ -117,7 +117,7 @@ function Registry.formatters_by_ft()
 
     for _, conf in pairs(raw) do
         if conf.formatter and conf.meta and conf.meta.ft then
-            for tool_name, fmt_conf in pairs(conf.formatter) do
+            for _, fmt_conf in pairs(conf.formatter) do
                 if fmt_conf.enable and fmt_conf.opts and fmt_conf.opts.conform and fmt_conf.opts.conform.fmt_ft then
                     for _, ft in ipairs(conf.meta.ft) do
                         result[ft] = result[ft] or {}
@@ -165,7 +165,12 @@ function Registry.treesitter_ensure()
 
     for _, conf in pairs(raw) do
         if conf.treesitter and conf.treesitter.enable then
-            table.insert(result, conf.treesitter.ensure_installed)
+            local ensure = conf.treesitter.ensure_installed
+            if type(ensure) == "table" then
+                for _, lang in ipairs(ensure) do
+                    table.insert(result, lang)
+                end
+            end
         end
     end
 

@@ -1,4 +1,4 @@
--- better diagnostics list and others
+-- 更好的 diagnostics list and others
 return {
     "folke/trouble.nvim",
     cmd = { "Trouble" },

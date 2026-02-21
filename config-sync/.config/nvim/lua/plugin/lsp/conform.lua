@@ -1,8 +1,5 @@
 -- 代码格式化
-local R = require "config.lang_registry"
-
--- 获取格式化映射
-local formatters_by_ft = R.formatters_by_ft()
+local R = require "lsp.lang_registry"
 
 -- 获取允许 LSP fallback 的 ft
 local fallback_ft = R.lsp_fallback_ft()
@@ -21,7 +18,7 @@ return {
 
     opts = {
         -- 文件类型对应的格式化工具（来自语言注册表）
-        formatters_by_ft = formatters_by_ft,
+        formatters_by_ft = R.formatters_by_ft(),
 
         -- 修改调用 conform.format() 时的默认选项
         -- 同样会影响 format_on_save / format_after_save 的默认值

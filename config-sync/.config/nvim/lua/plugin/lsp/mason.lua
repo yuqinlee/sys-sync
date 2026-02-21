@@ -1,5 +1,5 @@
 -- 语言服务器、格式化工具、调试工具等安装框架
-local R = require("config.lang_registry")
+local R = require "lsp.lang_registry"
 
 return {
     {

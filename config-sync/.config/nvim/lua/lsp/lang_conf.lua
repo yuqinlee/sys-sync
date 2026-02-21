@@ -38,13 +38,11 @@ M.languages = {
                 },
             },
         },
-        lint = {
-                   },
-        dap = {
-        },
+        lint = {},
+        dap = {},
         treesitter = {
             enable = true,
-            ensure_installed = "lua",
+            ensure_installed = { "lua" },
         },
     },
 
@@ -94,12 +92,33 @@ M.languages = {
             },
         },
 
-        dap = {
-        },
+        dap = {},
 
         treesitter = {
             enable = true,
-            ensure_installed = "python",
+            ensure_installed = { "python" },
+        },
+    },
+
+    vim = {
+        meta = {
+            name = "vim",
+            ft = { "vim" },
+        },
+        treesitter = {
+            enable = true,
+            ensure_installed = { "vim", "vimdoc" },
+        },
+    },
+
+    markdown = {
+        meta = {
+            name = "markdown",
+            ft = { "markdown" },
+        },
+        treesitter = {
+            enable = true,
+            ensure_installed = { "markdown", "markdown_inline" },
         },
     },
 }

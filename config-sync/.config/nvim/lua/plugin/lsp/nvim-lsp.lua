@@ -1,8 +1,10 @@
 -- 语言服务器
-local R = require "config.lang_registry"
+local R = require "lsp.lang_registry"
 
 return {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+
     config = function()
         -- 诊断信息的图标
         vim.diagnostic.config {
@@ -16,12 +18,10 @@ return {
             },
         }
 
-        -- 获取 lsp
+        -- 解析 lsp 配置
         local settings = R.lsp_settings()
         for server, conf in pairs(settings) do
-            vim.lsp.config(server, {
-                settings = conf,
-            })
+            vim.lsp.config(server, { settings = conf })
             vim.lsp.enable(server)
         end
     end,

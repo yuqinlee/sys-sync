@@ -2,7 +2,11 @@
 
 yuchin's  neovim config
 
-## keyword
+## check installed
+
+- zip
+- unzip
+- node
 
 --
 
