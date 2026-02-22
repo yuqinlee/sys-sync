@@ -1,4 +1,4 @@
-local system={
+local system = {
 
     -- Do not use vim.version as it loads the vim.version module
     -- Using vim.fn.api_info().version is no good either as api_info also consumes much time
@@ -12,4 +12,3 @@ local system={
 }
 
 return system
-
