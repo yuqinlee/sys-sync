@@ -1,11 +1,10 @@
 -- 代码格式化
-local R = require "lsp.lang_registry"
-
--- 获取允许 LSP fallback 的 ft
-local fallback_ft = R.lsp_fallback_ft()
+local parser = require "lsp.lang_conf_parser"
 
 -- 动态生成 lsp_format 规则
 local function resolve_lsp_fallback(bufnr)
+    -- 获取允许 LSP fallback 的 ft
+    local fallback_ft = parser.lsp_fallback_ft()
     local ft = vim.bo[bufnr].filetype
     if fallback_ft[ft] then
         return "fallback"
@@ -17,8 +16,10 @@ return {
     "stevearc/conform.nvim",
 
     opts = {
+        -- 自定义的格式化工具
+        formatters = parser.formatters(),
         -- 文件类型对应的格式化工具（来自语言注册表）
-        formatters_by_ft = R.formatters_by_ft(),
+        formatters_by_ft = parser.formatters_by_ft(),
 
         -- 修改调用 conform.format() 时的默认选项
         -- 同样会影响 format_on_save / format_after_save 的默认值

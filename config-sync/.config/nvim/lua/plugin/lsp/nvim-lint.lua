@@ -1,5 +1,5 @@
 -- lint 提示
-local R = require "lsp.lang_registry"
+local parser = require "lsp.lang_conf_parser"
 
 return {
     "mfussenegger/nvim-lint",
@@ -9,7 +9,7 @@ return {
         local lint = require "lint"
 
         -- 指定不同 filetype 使用的 linter
-        lint.linters_by_ft = R.nvim_lint_linters_by_ft()
+        lint.linters_by_ft = parser.nvim_lint_linters_by_ft()
         -- 自动触发 lint
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

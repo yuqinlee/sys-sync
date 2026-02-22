@@ -1,5 +1,5 @@
 -- 语言服务器
-local R = require "lsp.lang_registry"
+local parser = require "lsp.lang_conf_parser"
 
 return {
     "neovim/nvim-lspconfig",
@@ -19,9 +19,9 @@ return {
         }
 
         -- 解析 lsp 配置
-        local settings = R.lsp_settings()
-        for server, conf in pairs(settings) do
-            vim.lsp.config(server, { settings = conf })
+        local configs = parser.lsp_opts()
+        for server, conf in pairs(configs) do
+            vim.lsp.config(server, conf)
             vim.lsp.enable(server)
         end
     end,

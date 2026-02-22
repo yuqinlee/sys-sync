@@ -42,7 +42,7 @@ function Registry.lsp_servers()
     return result
 end
 
-function Registry.lsp_settings()
+function Registry.lsp_opts()
     local result = {}
 
     for _, conf in pairs(raw) do
@@ -118,10 +118,15 @@ function Registry.formatters_by_ft()
     for _, conf in pairs(raw) do
         if conf.formatter and conf.meta and conf.meta.ft then
             for _, fmt_conf in pairs(conf.formatter) do
-                if fmt_conf.enable and fmt_conf.opts and fmt_conf.opts.conform and fmt_conf.opts.conform.fmt_ft then
+                if
+                    fmt_conf.enable
+                    and fmt_conf.opts
+                    and fmt_conf.opts.conform
+                    and fmt_conf.opts.conform.formatters_by_ft
+                then
                     for _, ft in ipairs(conf.meta.ft) do
                         result[ft] = result[ft] or {}
-                        for _, formatter_name in ipairs(fmt_conf.opts.conform.fmt_ft) do
+                        for _, formatter_name in ipairs(fmt_conf.opts.conform.formatters_by_ft) do
                             table.insert(result[ft], formatter_name)
                         end
                     end
@@ -133,6 +138,28 @@ function Registry.formatters_by_ft()
     return result
 end
 
+function Registry.formatters()
+    local result = {}
+
+    for _, conf in pairs(raw) do
+        if conf.formatter then
+            for _, fmt_conf in pairs(conf.formater or conf.formatter) do
+                if fmt_conf.enable and fmt_conf.opts and fmt_conf.opts.conform and fmt_conf.opts.conform.formatters then
+                    for name, formatter in pairs(fmt_conf.opts.conform.formatters) do
+                        -- 避免重复注册
+                        if result[name] then
+                            result[name] = vim.tbl_deep_extend("force", result[name], formatter)
+                        else
+                            result[name] = formatter
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    return result
+end
 function Registry.lsp_fallback_ft()
     local result = {}
 
