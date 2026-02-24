@@ -263,7 +263,8 @@ M.languages = {
                             ["clang-format-with-args"] = {
                                 command = "clang-format",
                                 args = {
-                                    '-style={"BasedOnStyle":"LLVM","IndentWidth":4,"BreakBeforeBraces":"Attach","PointerAlignment":"Left"}',
+                                    -- '-style={"BasedOnStyle":"LLVM","IndentWidth":4,"BreakBeforeBraces":"Attach","PointerAlignment":"Left"}',
+                                    '-style={"BasedOnStyle":"LLVM","IndentWidth":4,"PointerAlignment":"Left","BreakBeforeBraces":"Attach","AllowShortFunctionsOnASingleLine":"None","AllowShortIfStatementsOnASingleLine":false,"AllowShortLoopsOnASingleLine":false,"SpaceBeforeParens":"Custom","SpaceBeforeParensOptions":{"AfterFunctionDeclarationName":true,"AfterFunctionDefinitionName":true}}',
                                     "-assume-filename=dummy.cpp",
                                 },
                                 stdin = true,
@@ -287,6 +288,103 @@ M.languages = {
         treesitter = {
             enable = true,
             ensure_installed = { "c", "cpp", "cmake" },
+        },
+    },
+
+    json = {
+        meta = {
+            name = "json",
+            ft = { "json", "jsonc" },
+        },
+
+        lsp = {},
+
+        formatter = {
+            prettier = {
+                enable = true,
+                mason = true,
+                opts = {
+                    conform = {
+                        formatters_by_ft = { "prettier" },
+                        lsp_fallback = false,
+                    },
+                },
+            },
+        },
+
+        lint = {},
+
+        dap = {},
+
+        treesitter = {
+            enable = true,
+            ensure_installed = { "json" },
+        },
+    },
+
+    toml = {
+        meta = {
+            name = "toml",
+            ft = { "toml" },
+        },
+
+        lsp = {
+            taplo = {
+                enable = true,
+                mason = true,
+                opts = {},
+            },
+        },
+
+        formatter = {
+            taplo = {
+                enable = true,
+                mason = true,
+                opts = {
+                    conform = {
+                        formatters_by_ft = { "taplo" },
+                        lsp_fallback = false,
+                    },
+                },
+            },
+        },
+
+        lint = {},
+
+        dap = {},
+
+        treesitter = {
+            enable = true,
+            ensure_installed = { "toml" },
+        },
+    },
+    conf = {
+        meta = {
+            name = "conf",
+            ft = { "conf", "ini", "cfg" },
+        },
+
+        lsp = {},
+
+        formatter = {
+            prettier = {
+                enable = true,
+                mason = true,
+                opts = {
+                    conform = {
+                        formatters_by_ft = { "prettier" },
+                        lsp_fallback = false,
+                    },
+                },
+            },
+        },
+
+        lint = {},
+
+        dap = {},
+
+        treesitter = {
+            enable = false,
         },
     },
 }
