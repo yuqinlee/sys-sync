@@ -160,6 +160,7 @@ function Registry.formatters()
 
     return result
 end
+
 function Registry.lsp_fallback_ft()
     local result = {}
 

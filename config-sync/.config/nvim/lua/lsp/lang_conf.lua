@@ -40,7 +40,7 @@ M.languages = {
                 opts = {
                     -- 自定义选项，定义如 conform 等配置
                     conform = {
-                        fmt_ft = { "stylua" },
+                        formatters_by_ft = { "stylua" },
                         lsp_fallback = true,
                     },
                 },
@@ -84,7 +84,7 @@ M.languages = {
                 opts = {
                     conform = {
                         -- conform 内置 formatter 名称
-                        fmt_ft = { "ruff_format" },
+                        formatters_by_ft = { "ruff_format" },
                         lsp_fallback = false,
                     },
                 },
@@ -143,7 +143,7 @@ M.languages = {
                 mason = true,
                 opts = {
                     conform = {
-                        fmt_ft = { "prettier" },
+                        formatters_by_ft = { "prettier" },
                         lsp_fallback = false,
                     },
                 },
@@ -193,7 +193,7 @@ M.languages = {
                 mason = true,
                 opts = {
                     conform = {
-                        fmt_ft = { "shfmt" },
+                        formatters_by_ft = { "shfmt" },
                         lsp_fallback = false,
                     },
                 },
