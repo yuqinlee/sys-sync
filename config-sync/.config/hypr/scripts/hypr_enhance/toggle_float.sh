@@ -62,47 +62,47 @@ if [ "$is_floating" = "true" ]; then
     while IFS= read -r addr; do
         # 只转换浮动窗口
         if hyprctl clients -j | jq -r --arg addr "$addr" '.[] | select(.address == $addr) | .floating' | grep -q "true"; then
-            hyprctl dispatch togglefloating address:$addr
+            hyprctl dispatch togglefloating "address:$addr"
             count=$((count + 1))
         fi
-    done <<< "$windows"
-    
+    done <<<"$windows"
+
     # 可选：显示通知
     # notify-send "Workspace Toggle" "Tiled $count windows" -t 1000
-    
+
 else
     # 当前工作区所有窗口都是平铺的，转为浮动并排列
     window_count=$(echo "$windows" | wc -l)
-    
+
     # 边距设置
     margin=30
     work_w=$((width - 2 * margin))
     work_h=$((height - 2 * margin))
-    
+
     # 首先将所有窗口转为浮动
     while IFS= read -r addr; do
-        hyprctl dispatch togglefloating address:$addr
-    done <<< "$windows"
-    
+        hyprctl dispatch togglefloating "address:$addr"
+    done <<<"$windows"
+
     # 等待窗口状态更新
     sleep 0.05
-    
+
     # 根据窗口数量计算网格布局
-    if [ $window_count -eq 1 ]; then
+    if [ "$window_count" -eq 1 ]; then
         # 单个窗口居中
         cell_w=$((work_w * 3 / 4))
         cell_h=$((work_h * 3 / 4))
         pos_x=$((x + margin + (work_w - cell_w) / 2))
         pos_y=$((y + margin + (work_h - cell_h) / 2))
-        
+
         addr=$(echo "$windows" | head -1)
         hyprctl --batch "dispatch focuswindow address:$addr; dispatch resizeactive exact $cell_w $cell_h; dispatch moveactive exact $pos_x $pos_y"
-        
-    elif [ $window_count -eq 2 ]; then
+
+    elif [ "$window_count" -eq 2 ]; then
         # 两个窗口左右排列
         cell_w=$((work_w / 2 - 10))
         cell_h=$((work_h - 40))
-        
+
         i=0
         while IFS= read -r addr; do
             if [ $i -eq 0 ]; then
@@ -111,34 +111,34 @@ else
                 pos_x=$((x + margin + cell_w + 15))
             fi
             pos_y=$((y + margin + 20))
-            
+
             hyprctl --batch "dispatch focuswindow address:$addr; dispatch resizeactive exact $cell_w $cell_h; dispatch moveactive exact $pos_x $pos_y"
-            i=$((i+1))
-        done <<< "$windows"
-        
+            i=$((i + 1))
+        done <<<"$windows"
+
     else
         # 多个窗口：网格排列
         cols=$(echo "sqrt($window_count)" | bc)
-        [ $cols -eq 0 ] && cols=1
+        [ "$cols" -eq 0 ] && cols=1
         rows=$(((window_count + cols - 1) / cols))
-        
+
         cell_w=$((work_w / cols - 10))
         cell_h=$((work_h / rows - 10))
-        
+
         i=0
         while IFS= read -r addr; do
             row=$((i / cols))
             col=$((i % cols))
-            
+
             pos_x=$((x + margin + 5 + col * (cell_w + 10)))
             pos_y=$((y + margin + 20 + row * (cell_h + 10)))
-            
+
             hyprctl --batch "dispatch focuswindow address:$addr; dispatch resizeactive exact $cell_w $cell_h; dispatch moveactive exact $pos_x $pos_y"
-            
-            i=$((i+1))
-        done <<< "$windows"
+
+            i=$((i + 1))
+        done <<<"$windows"
     fi
-    
+
     # 可选：显示通知
     # notify-send "Workspace Toggle" "Floating $window_count windows" -t 1000
 fi

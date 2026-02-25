@@ -183,7 +183,9 @@ M.languages = {
             bashls = {
                 enable = true,
                 mason = true,
-                opts = {},
+                opts = {
+                    filetypes = { "sh", "bash", "zsh" },
+                },
             },
         },
 

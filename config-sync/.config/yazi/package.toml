@@ -1,11 +1,11 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "88990a6"
-hash = "9ad20d763df07ce40fd09de549d914b0"
+rev = "b224ddf"
+hash = "91937a4a9b779eabc6983e258befdfe9"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "88990a6"
+rev = "b224ddf"
 hash = "270915fa8282a19908449530ff66f7e2"
 
 [[plugin.deps]]
@@ -25,8 +25,8 @@ hash = "778941e7f1ebbacd60f4e254bb3c51de"
 
 [[plugin.deps]]
 use = "boydaihungst/gvfs"
-rev = "30440c7"
-hash = "211b7d22478b907e5f6fd4fe27a923e"
+rev = "9d64595"
+hash = "b6f691f01a2122bd94866800d4d12a22"
 
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"
