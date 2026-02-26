@@ -1,5 +1,5 @@
 -- 代码格式化
-local parser = require "lsp.lang_conf_parser"
+local parser = require("lsp").Parser
 
 -- 动态生成 lsp_format 规则
 local function resolve_lsp_fallback(bufnr)

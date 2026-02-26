@@ -65,7 +65,6 @@ M.languages = {
                 enable = true,
                 mason = true,
                 opts = {
-                    -- 这里可以放 strict 等配置
                     settings = {
                         basedpyright = {
                             analysis = {

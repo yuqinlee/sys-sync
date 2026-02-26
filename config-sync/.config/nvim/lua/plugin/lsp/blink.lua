@@ -67,8 +67,8 @@ return {
             ["<S-Tab>"] = { "select_prev", "fallback" },
 
             -- 文档滚动
-            ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-            ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+            ["<C-p>"] = { "scroll_documentation_up", "fallback" },
+            ["<C-n>"] = { "scroll_documentation_down", "fallback" },
 
             -- snippet 跳转（避免冲突）
             ["<C-l>"] = { "snippet_forward", "fallback" },

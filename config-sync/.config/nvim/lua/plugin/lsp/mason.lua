@@ -1,5 +1,5 @@
 -- 语言服务器、格式化工具、调试工具等安装框架
-local parser = require "lsp.lang_conf_parser"
+local parser = require("lsp").Parser
 
 return {
     {

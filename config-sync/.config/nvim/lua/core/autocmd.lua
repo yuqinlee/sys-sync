@@ -1,4 +1,4 @@
-local utils = require "core.utils"
+local utils = require "comm.utils"
 
 -- 自动保存
 local function clear_cmdarea()

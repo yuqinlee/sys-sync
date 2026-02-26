@@ -1,22 +1,23 @@
-local raw = require("lsp.lang_conf").languages
+local lang_conf = require("lsp.lang_conf").languages
 
-local Registry = {}
+local lsp={}
+lsp.Parser = {}
 
 ------------------------------------------------
 -- 基础访问
 ------------------------------------------------
 
-function Registry.all()
-    return raw
+function lsp.Parser.all()
+    return lang_conf
 end
 
-function Registry.get(lang)
-    return raw[lang]
+function lsp.Parser.get(lang)
+    return lang_conf[lang]
 end
 
-function Registry.enabled()
+function lsp.Parser.enabled()
     local result = {}
-    for name, conf in pairs(raw) do
+    for name, conf in pairs(lang_conf) do
         result[name] = conf
     end
     return result
@@ -26,10 +27,10 @@ end
 -- LSP 相关（新版结构）
 ------------------------------------------------
 
-function Registry.lsp_servers()
+function lsp.Parser.lsp_servers()
     local result = {}
 
-    for _, conf in pairs(raw) do
+    for _, conf in pairs(lang_conf) do
         if conf.lsp then
             for name, lsp_conf in pairs(conf.lsp) do
                 if lsp_conf.enable then
@@ -42,10 +43,10 @@ function Registry.lsp_servers()
     return result
 end
 
-function Registry.lsp_opts()
+function lsp.Parser.lsp_opts()
     local result = {}
 
-    for _, conf in pairs(raw) do
+    for _, conf in pairs(lang_conf) do
         if conf.lsp then
             for name, lsp_conf in pairs(conf.lsp) do
                 if lsp_conf.enable then
@@ -62,10 +63,10 @@ end
 -- Mason 需要安装的 LSP
 ------------------------------------------------
 
-function Registry.mason_lsp()
+function lsp.Parser.mason_lsp()
     local result = {}
 
-    for _, conf in pairs(raw) do
+    for _, conf in pairs(lang_conf) do
         if conf.lsp then
             for name, lsp_conf in pairs(conf.lsp) do
                 if lsp_conf.enable and lsp_conf.mason then
@@ -82,10 +83,10 @@ end
 -- Mason 需要安装的其他工具（formatter / lint）
 ------------------------------------------------
 
-function Registry.mason_tools()
+function lsp.Parser.mason_tools()
     local result = {}
 
-    for _, conf in pairs(raw) do
+    for _, conf in pairs(lang_conf) do
         -- formatter
         if conf.formatter then
             for name, fmt_conf in pairs(conf.formatter) do
@@ -112,10 +113,10 @@ end
 -- Conform 解析（新版结构）
 ------------------------------------------------
 
-function Registry.formatters_by_ft()
+function lsp.Parser.formatters_by_ft()
     local result = {}
 
-    for _, conf in pairs(raw) do
+    for _, conf in pairs(lang_conf) do
         if conf.formatter and conf.meta and conf.meta.ft then
             for _, fmt_conf in pairs(conf.formatter) do
                 if
@@ -138,10 +139,10 @@ function Registry.formatters_by_ft()
     return result
 end
 
-function Registry.formatters()
+function lsp.Parser.formatters()
     local result = {}
 
-    for _, conf in pairs(raw) do
+    for _, conf in pairs(lang_conf) do
         if conf.formatter then
             for _, fmt_conf in pairs(conf.formater or conf.formatter) do
                 if fmt_conf.enable and fmt_conf.opts and fmt_conf.opts.conform and fmt_conf.opts.conform.formatters then
@@ -161,10 +162,10 @@ function Registry.formatters()
     return result
 end
 
-function Registry.lsp_fallback_ft()
+function lsp.Parser.lsp_fallback_ft()
     local result = {}
 
-    for _, conf in pairs(raw) do
+    for _, conf in pairs(lang_conf) do
         if conf.formatter and conf.meta and conf.meta.ft then
             for _, fmt_conf in pairs(conf.formatter) do
                 if
@@ -188,10 +189,10 @@ end
 -- Treesitter
 ------------------------------------------------
 
-function Registry.treesitter_ensure()
+function lsp.Parser.treesitter_ensure()
     local result = {}
 
-    for _, conf in pairs(raw) do
+    for _, conf in pairs(lang_conf) do
         if conf.treesitter and conf.treesitter.enable then
             local ensure = conf.treesitter.ensure_installed
             if type(ensure) == "table" then
@@ -208,10 +209,10 @@ end
 ------------------------------------------------
 -- 生成 nvim-lint 所需 linters_by_ft
 ------------------------------------------------
-function Registry.nvim_lint_linters_by_ft()
+function lsp.Parser.nvim_lint_linters_by_ft()
     local result = {}
 
-    for _, lang in pairs(raw) do
+    for _, lang in pairs(lang_conf) do
         local lint = lang.lint
         local fts = lang.meta and lang.meta.ft
 
@@ -232,4 +233,4 @@ function Registry.nvim_lint_linters_by_ft()
     return result
 end
 
-return Registry
+return lsp

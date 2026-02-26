@@ -1,5 +1,5 @@
 -- 语法树分析
-local parser = require "lsp.lang_conf_parser"
+local parser = require("lsp").Parser
 
 return {
     "nvim-treesitter/nvim-treesitter",
