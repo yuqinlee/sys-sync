@@ -76,6 +76,11 @@ vim.opt.inccommand = "split" -- preview matched word in command mode
 -- ============================================================================
 --                          code & function
 -- ============================================================================
+-- Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldenable = false -- don't fold when open file
+
 -- Searching
 vim.opt.incsearch = true -- search as characters are entered
 vim.opt.hlsearch = false -- disable highlight for search matches

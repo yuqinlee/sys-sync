@@ -1,7 +1,14 @@
 local M = {}
 
 M.languages = {
-
+    comm = {
+        meta = {
+            name = "comm",
+            desc = "utils installed by mason",
+        },
+        lsp = {},
+        treesitter = {},
+    },
     lua = {
         meta = {
             name = "lua",
@@ -83,7 +90,7 @@ M.languages = {
                 opts = {
                     conform = {
                         -- conform 内置 formatter 名称
-                        formatters_by_ft = { "ruff_format" },
+                        formatters_by_ft = { "ruff_import", "ruff_format" },
                         lsp_fallback = false,
                     },
                 },

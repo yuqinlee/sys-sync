@@ -1,50 +1,89 @@
 -- 语法树分析
-local parser = require("lsp").Parser
+local configParser = require("lsp").Parser
 
 return {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-        require("nvim-treesitter").setup {
-            ensure_installed = parser.treesitter_ensure(),
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            require("nvim-treesitter.configs").setup {
+                -- 自动安装 parser
+                ensure_installed = configParser.treesitter_ensure(),
+                auto_install = true,
+                sync_install = false,
 
-            -- 有 parser 缺失时自动安装
-            auto_install = true,
+                -- 高亮
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
 
-            -- 安装时使用 git（比 curl 稳定）
-            prefer_git = true,
+                -- 缩进
+                indent = {
+                    enable = false,
+                    disable = { "python", "yaml" },
+                },
 
-            highlight = {
-                enable = true,
+                -- 增量选择
+                incremental_selection = {
+                    enable = true,
+                    keymaps = {
+                        init_selection = "<CR>",
+                        node_incremental = "<CR>",
+                        scope_incremental = "<S-CR>",
+                        node_decremental = "<BS>",
+                    },
+                },
+            }
+        end,
+    },
 
-                -- 避免大文件卡死
-                disable = function(lang, buf)
-                    local max_filesize = 200 * 1024 -- 200 KB
-                    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                    if ok and stats and stats.size > max_filesize then
-                        return true
-                    end
-                end,
+    -- 文本对象
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        event = "BufReadPost",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        },
 
-                -- 如果你用传统 syntax，也可以关掉
-                additional_vim_regex_highlighting = false,
-            },
+        opts = {
+            textobjects = {
+                move = {
+                    enable = true,
+                    set_jumps = true,
 
-            indent = {
-                enable = true,
-                disable = { "yaml" }, -- yaml 缩进偶尔抽风
-            },
+                    goto_next_start = {
+                        ["]f"] = "@function.outer",
+                        ["]c"] = "@class.outer",
+                    },
+                    goto_next_end = {
+                        ["]F"] = "@function.outer",
+                        ["]C"] = "@class.outer",
+                    },
+                    goto_previous_start = {
+                        ["[f"] = "@function.outer",
+                        ["[c"] = "@class.outer",
+                    },
+                    goto_previous_end = {
+                        ["[F"] = "@function.outer",
+                        ["[C"] = "@class.outer",
+                    },
+                },
 
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "gnn",
-                    node_incremental = "grn",
-                    node_decremental = "grm",
-                    scope_incremental = "grc",
+                select = {
+                    enable = true,
+                    lookahead = true,
+
+                    keymaps = {
+                        ["af"] = "@function.outer",
+                        ["if"] = "@function.inner",
+                        ["ac"] = "@class.outer",
+                        ["ic"] = "@class.inner",
+                    },
                 },
             },
-        }
-    end,
+        },
+    },
 }
