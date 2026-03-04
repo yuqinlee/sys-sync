@@ -1,21 +1,28 @@
-local lang_conf = require("lsp.lang_conf").languages
-
-local lsp={}
-lsp.Parser = {}
+local lang_conf = {
+    -- import language config collection
+    lua = require "lang.server.lua_server",
+    python = require "lang.server.python",
+    c_family = require "lang.server.c_family",
+    vim = require "lang.server.vim",
+    json = require "lang.server.json",
+    toml = require "lang.server.toml",
+}
 
 ------------------------------------------------
 -- 基础访问
 ------------------------------------------------
 
-function lsp.Parser.all()
+local lang = {}
+lang.Parser = {}
+function lang.Parser.all()
     return lang_conf
 end
 
-function lsp.Parser.get(lang)
-    return lang_conf[lang]
+function lang.Parser.get(language)
+    return lang_conf[language]
 end
 
-function lsp.Parser.enabled()
+function lang.Parser.enabled()
     local result = {}
     for name, conf in pairs(lang_conf) do
         result[name] = conf
@@ -27,7 +34,7 @@ end
 -- LSP 相关（新版结构）
 ------------------------------------------------
 
-function lsp.Parser.lsp_servers()
+function lang.Parser.lsp_servers()
     local result = {}
 
     for _, conf in pairs(lang_conf) do
@@ -43,7 +50,7 @@ function lsp.Parser.lsp_servers()
     return result
 end
 
-function lsp.Parser.lsp_opts()
+function lang.Parser.lsp_opts()
     local result = {}
 
     for _, conf in pairs(lang_conf) do
@@ -63,7 +70,7 @@ end
 -- Mason 需要安装的 LSP
 ------------------------------------------------
 
-function lsp.Parser.mason_lsp()
+function lang.Parser.mason_lsp()
     local result = {}
 
     for _, conf in pairs(lang_conf) do
@@ -83,7 +90,7 @@ end
 -- Mason 需要安装的其他工具（formatter / lint）
 ------------------------------------------------
 
-function lsp.Parser.mason_tools()
+function lang.Parser.mason_tools()
     local result = {}
 
     for _, conf in pairs(lang_conf) do
@@ -113,7 +120,7 @@ end
 -- Conform 解析（新版结构）
 ------------------------------------------------
 
-function lsp.Parser.formatters_by_ft()
+function lang.Parser.formatters_by_ft()
     local result = {}
 
     for _, conf in pairs(lang_conf) do
@@ -139,7 +146,7 @@ function lsp.Parser.formatters_by_ft()
     return result
 end
 
-function lsp.Parser.formatters()
+function lang.Parser.formatters()
     local result = {}
 
     for _, conf in pairs(lang_conf) do
@@ -162,7 +169,7 @@ function lsp.Parser.formatters()
     return result
 end
 
-function lsp.Parser.lsp_fallback_ft()
+function lang.Parser.lsp_fallback_ft()
     local result = {}
 
     for _, conf in pairs(lang_conf) do
@@ -189,7 +196,7 @@ end
 -- Treesitter
 ------------------------------------------------
 
-function lsp.Parser.treesitter_ensure()
+function lang.Parser.treesitter_ensure()
     local result = {}
 
     for _, conf in pairs(lang_conf) do
@@ -209,7 +216,7 @@ end
 ------------------------------------------------
 -- 生成 nvim-lint 所需 linters_by_ft
 ------------------------------------------------
-function lsp.Parser.nvim_lint_linters_by_ft()
+function lang.Parser.nvim_lint_linters_by_ft()
     local result = {}
 
     for _, lang in pairs(lang_conf) do
@@ -233,4 +240,4 @@ function lsp.Parser.nvim_lint_linters_by_ft()
     return result
 end
 
-return lsp
+return lang

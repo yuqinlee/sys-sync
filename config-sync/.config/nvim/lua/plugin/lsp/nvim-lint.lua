@@ -1,5 +1,5 @@
 -- lint 提示
-local parser = require("lsp").Parser
+local parser = require("lang").Parser
 
 return {
     "mfussenegger/nvim-lint",

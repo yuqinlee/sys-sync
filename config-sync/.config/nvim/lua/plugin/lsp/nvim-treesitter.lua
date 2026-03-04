@@ -1,5 +1,5 @@
 -- 语法树分析
-local configParser = require("lsp").Parser
+local configParser = require("lang").Parser
 
 return {
     {
@@ -8,9 +8,9 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("nvim-treesitter.configs").setup {
-                -- 自动安装 parser
+                -- 安装 parser
                 ensure_installed = configParser.treesitter_ensure(),
-                auto_install = true,
+                auto_install = false, -- TODO: 这里改成 false 后续需要检测 网络连接+有对应 parser 再提示下载
                 sync_install = false,
 
                 -- 高亮

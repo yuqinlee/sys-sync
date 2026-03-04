@@ -1,5 +1,5 @@
 -- 语言服务器
-local parser = require("lsp").Parser
+local parser = require("lang").Parser
 
 return {
     "neovim/nvim-lspconfig",
