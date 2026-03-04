@@ -11,7 +11,6 @@ local lang_conf = {
 ------------------------------------------------
 -- 基础访问
 ------------------------------------------------
-
 local lang = {}
 lang.Parser = {}
 function lang.Parser.all()
@@ -22,16 +21,8 @@ function lang.Parser.get(language)
     return lang_conf[language]
 end
 
-function lang.Parser.enabled()
-    local result = {}
-    for name, conf in pairs(lang_conf) do
-        result[name] = conf
-    end
-    return result
-end
-
 ------------------------------------------------
--- LSP 相关（新版结构）
+-- LSP 相关
 ------------------------------------------------
 
 function lang.Parser.lsp_servers()

@@ -10,7 +10,7 @@ return {
             require("nvim-treesitter.configs").setup {
                 -- 安装 parser
                 ensure_installed = configParser.treesitter_ensure(),
-                auto_install = false, -- TODO: 这里改成 false 后续需要检测 网络连接+有对应 parser 再提示下载
+                auto_install = false, -- 自动下载可能会造成阻塞，视情况安装
                 sync_install = false,
 
                 -- 高亮

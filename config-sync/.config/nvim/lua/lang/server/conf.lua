@@ -25,5 +25,6 @@ return {
 
     treesitter = {
         enable = true,
+        ensure_installed = { "ssh_config", "editorconfig", "git_config", "ini" },
     },
 }
