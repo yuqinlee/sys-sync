@@ -18,7 +18,6 @@
 ## 新增用户
 
 ```bash
-
 sudo useradd -u 1024 -g 1024 -m -s /bin/zsh yuchin
 sudo usermod -aG wheel yuchin
 sudo passwd yuchin
@@ -225,4 +224,10 @@ qt与 wayland
 
 ```bash
 sudo pacman -S qt5-wayland qt6-wayland
+```
+
+- avahi  mDNS daemon
+- nss-mdns 让系统支持 .local 解析
+```bash
+sudo systemctl enable --now avahi-daemon
 ```
