@@ -4,6 +4,7 @@ local configParser = require("lang").Parser
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        version = "*",
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
         config = function()
