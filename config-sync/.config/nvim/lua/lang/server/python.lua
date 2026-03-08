@@ -27,7 +27,7 @@ return {
             opts = {
                 conform = {
                     -- conform 内置 formatter 名称
-                    formatters_by_ft = { "ruff_import", "ruff_format" },
+                    formatters_by_ft = { "ruff_organize_imports", "ruff_format" },
                     lsp_fallback = false,
                 },
             },
