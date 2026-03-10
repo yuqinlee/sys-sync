@@ -9,7 +9,7 @@ stow \
     --ignore etc \
     --ignore stow-on.sh \
     --ignore stow-off.sh \
-    --ignore README.md \
+    --ignore README.md
 
 # cancel multi device config stow
 HOST="$(uname -n)"

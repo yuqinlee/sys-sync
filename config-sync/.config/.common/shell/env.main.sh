@@ -33,10 +33,10 @@ export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
 export PYTHON_HISTORY="$XDG_STATE_HOME"/python/history # python v3.13.0a3 or later
 export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
 export PYTHONUSERBASE=$XDG_DATA_HOME/python
-export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc 
+export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc
 export PYENV_ROOT=$XDG_DATA_HOME/pyenv
 # npm & nvm
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc 
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME"/npm/config/npm-init.js
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
 export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
@@ -53,9 +53,14 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 # kde
 export KDEHOME="$XDG_CONFIG_HOME"/kde
+# volta
+export VOLTA_HOME="$HOME/.local/share/volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # source out env
-SCRIPT_DIR=$(cd "$(dirname "$0")" || exit 1; pwd)
+SCRIPT_DIR=$(
+    cd "$(dirname "$0")" || exit 1
+    pwd
+)
 
 [ -f "$SCRIPT_DIR/env.opt.sh" ] && . "$SCRIPT_DIR/env.opt.sh"
-

@@ -21,7 +21,11 @@ return {
             mason = true,
             opts = {
                 conform = {
-                    formatters_by_ft = { "shfmt" },
+                    formatters_by_ft = {
+                        sh = { "shfmt" },
+                        bash = { "shfmt" },
+                        zsh = { "shfmt" },
+                    },
                     lsp_fallback = false,
                 },
             },
