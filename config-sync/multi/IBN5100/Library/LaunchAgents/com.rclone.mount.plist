@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+
+    <!-- 唯一标识 -->
+    <key>Label</key>
+    <string>com.rclone.mount</string>
+
+    <!-- 使用脚本启动 -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/yuchin/.config/.common/script/comm/rclone-connect.sh</string>
+    </array>
+
+    <!-- 开机自动运行 -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- 保持常驻（异常/断网/休眠恢复后自动拉起） -->
+    <key>KeepAlive</key>
+    <dict>
+      <!-- 进程退出就重启 -->
+      <key>SuccessfulExit</key>
+      <false/>
+
+      <!-- 网络变化时重新拉起（关键：应对休眠唤醒） -->
+      <key>NetworkState</key>
+      <true/>
+    </dict>
+
+    <!-- 延迟启动（避免开机网络未就绪） -->
+    <key>StartInterval</key>
+    <integer>30</integer>
+
+    <!-- 降低优先级（避免影响系统） -->
+    <key>Nice</key>
+    <integer>1</integer>
+
+    <!-- 防止重复实例 -->
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+    
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/yuchin/.local/share/rclone/rclone-mount-out.log</string>
+ 
+    <key>StandardErrorPath</key>
+    <string>/Users/yuchin/.local/share/rclone/rclone-mount-err.log</string>
+
+  </dict>
+</plist>
