@@ -1,7 +1,7 @@
 # environment variables of system inner
 
 # sys editor
-export EDITOR='/usr/bin/nvim'
+export EDITOR='nvim'
 
 # XDG config env
 export XDG_CONFIG_HOME=$HOME/.config

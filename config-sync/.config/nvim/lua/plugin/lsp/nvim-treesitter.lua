@@ -4,87 +4,41 @@ local configParser = require("lang").Parser
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        version = "*",
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            require("nvim-treesitter.configs").setup {
-                -- 安装 parser
-                ensure_installed = configParser.treesitter_ensure(),
-                auto_install = false, -- 自动下载可能会造成阻塞，视情况安装
-                sync_install = false,
-
-                -- 高亮
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-
-                -- 缩进
-                indent = {
-                    enable = false,
-                    disable = { "python", "yaml" },
-                },
-
-                -- 增量选择
-                incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = "<CR>",
-                        node_incremental = "<CR>",
-                        scope_incremental = "<S-CR>",
-                        node_decremental = "<BS>",
-                    },
-                },
-            }
-        end,
-    },
-
-    -- 文本对象
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        branch = "main",
-        event = "BufReadPost",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
+        cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
 
         opts = {
-            textobjects = {
-                move = {
-                    enable = true,
-                    set_jumps = true,
-
-                    goto_next_start = {
-                        ["]f"] = "@function.outer",
-                        ["]c"] = "@class.outer",
-                    },
-                    goto_next_end = {
-                        ["]F"] = "@function.outer",
-                        ["]C"] = "@class.outer",
-                    },
-                    goto_previous_start = {
-                        ["[f"] = "@function.outer",
-                        ["[c"] = "@class.outer",
-                    },
-                    goto_previous_end = {
-                        ["[F"] = "@function.outer",
-                        ["[C"] = "@class.outer",
-                    },
-                },
-
-                select = {
-                    enable = true,
-                    lookahead = true,
-
-                    keymaps = {
-                        ["af"] = "@function.outer",
-                        ["if"] = "@function.inner",
-                        ["ac"] = "@class.outer",
-                        ["ic"] = "@class.inner",
-                    },
-                },
-            },
+            highlight = { enable = true },
+            indent = { enable = true },
         },
+
+        config = function()
+            local treesitter = require "nvim-treesitter"
+            treesitter.install(configParser)
+
+            -- 自动安装缺失 parser
+            local install = require "nvim-treesitter.install"
+            local parsers = require "nvim-treesitter.parsers"
+
+            local missing = {}
+            for _, lang in ipairs(configParser) do
+                if not parsers.has_parser(lang) then
+                    table.insert(missing, lang)
+                end
+            end
+
+            if #missing > 0 then
+                install.update { with_sync = false }()
+            end
+
+            -- fold
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    vim.opt_local.foldmethod = "expr"
+                    vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+                end,
+            })
+        end,
     },
 }

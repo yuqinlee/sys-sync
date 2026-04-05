@@ -3,16 +3,16 @@
 系统同步配置 `sys-sync` 项目放置路径
 
 ```bash
- /data/data-exchange/sync/public/sys-sync
-├── 󰊢 .gitignore
-├──  config-sync
-│   ├──  .config
-│   ├── 󱆃 .zshenv
-│   ├──  etc
-│   ├──  stow-off.sh
-│   └──  stow-on.sh
-├──  LICENSE
-└── 󰂺 README.md
+/data/data-exchange/sync/public/sys-sync
+├── .gitignore
+├── config-sync
+│   ├── .config
+│   ├── .zshenv
+│   ├── etc
+│   ├── stow-off.sh
+│   └── stow-on.sh
+├── LICENSE
+└── README.md
 ```
 
 ## 新增用户
@@ -231,3 +231,51 @@ sudo pacman -S qt5-wayland qt6-wayland
 ```bash
 sudo systemctl enable --now avahi-daemon
 ```
+
+---
+
+## mac config only
+
+```bash
+brew install nvim
+brew install stow
+brew install yazi
+brew install eza
+brew install starship
+brew install font-jetbrains-mono-nerd-fon
+brew install zoxide
+brew install fzf
+brew install lazygit
+brew install fastfetch
+brew install mpv
+brew install xdg-ninja
+
+brew tap v2raya/v2raya
+brew install v2raya/v2raya/v2raya
+brew services start v2raya/v2raya/v2raya
+
+brew install volta
+
+```
+
+创建/data目录
+```bash
+# 1. 创建真实目录
+sudo mkdir -p /System/Volumes/Data/data
+
+# 2. 设置权限
+sudo chown $(whoami):staff /System/Volumes/Data/data
+
+# 3. 建立入口
+sudo nano /etc/synthetic.conf
+添加映射，但是中间是 tab 而不是空格
+data    System/Volumes/Data/data
+```
+
+- [brew安装完全指南：多系统适配与国内源配置技巧](https://www.trae.cn/article/660492802)
+- [Mac 下安装和使用 Homebrew](https://www.wulicode.com/os/mac/homebrew.html)
+
+
+macfuse安装+ rclone 自建仓
+
+

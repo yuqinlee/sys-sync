@@ -30,9 +30,9 @@ proxy_status() {
         echo "%F{red}$PROXY_ICON_OFF%f"
     fi
 }
-# precmd() {
-#     RPROMPT="$(proxy_status)"
-# }
+precmd() {
+    RPROMPT="$(proxy_status)"
+}
 
 # source out env
 SCRIPT_DIR=$(

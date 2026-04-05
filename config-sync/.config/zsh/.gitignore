@@ -1,2 +1,3 @@
 plugin/**
 **/*.zwc
+**/.zsh_sessions

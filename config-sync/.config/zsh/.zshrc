@@ -34,6 +34,12 @@ setopt INC_APPEND_HISTORY   # 命令执行后立即写入历史文件
 # =============================================================================
 #                              补全
 # =============================================================================
+# 补全路径
+fpath=(
+    "$XDG_CONFIG_HOME"/zsh/external/site-functions
+    /opt/homebrew/share/zsh/site-functions
+  $fpath
+)
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION           # 指定 zcompdump 缓存目录，补全函数索引缓存
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache # 指定运行期缓存，只影响补全阶段
@@ -101,10 +107,11 @@ znap source zdharma-continuum/fast-syntax-highlighting
 # prompt powered by starship instead `znap prompt romkatv/powerlevel10k`
 znap eval startship "starship init zsh"     # starship
 znap eval zoxide "zoxide init zsh --cmd cd" # zoxide
+znap eval mise "mise activate zsh"          # mise
 
 # fzf keybind
 # > ctrl+t search file
 # > alt+c  search file and cd to dir
 # > ctrl+r search history
 # > ctrl+i completions
-source "$XDG_CONFIG_HOME"/zsh/external/fzf.zsh
+# source "$XDG_CONFIG_HOME"/zsh/external/fzf.zsh
