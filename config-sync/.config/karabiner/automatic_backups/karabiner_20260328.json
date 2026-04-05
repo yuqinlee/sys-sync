@@ -1,0 +1,28 @@
+{
+  "description": "CapsLock tap=Esc, hold=Ctrl (true keyd style); Esc=CapsLock",
+  "manipulators": [
+    {
+      "type": "basic",
+      "from": {
+        "key_code": "caps_lock",
+        "modifiers": { "optional": ["any"] }
+      },
+      "to": [
+        { "key_code": "left_control" }
+      ],
+      "to_if_alone": [
+        { "key_code": "escape" }
+      ]
+    },
+    {
+      "type": "basic",
+      "from": {
+        "key_code": "escape",
+        "modifiers": { "optional": ["any"] }
+      },
+      "to": [
+        { "key_code": "caps_lock" }
+      ]
+    }
+  ]
+}
