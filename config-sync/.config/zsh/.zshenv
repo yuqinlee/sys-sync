@@ -1,2 +1,8 @@
-# load environment
-[ -f "$HOME/.config/.common/shell/env.main.sh" ] && . "$HOME/.config/.common/shell/env.main.sh"
+# =============================================================================
+#                       导入通用 shell 环境
+# =============================================================================
+IMPORT_PRE="$HOME/.config/.common/shell/import-prev.sh"
+
+if [ -s "$IMPORT_PRE" ]; then
+    . "$IMPORT_PRE"
+fi

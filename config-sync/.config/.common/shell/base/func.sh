@@ -34,10 +34,18 @@ precmd() {
     RPROMPT="$(proxy_status)"
 }
 
-# source out env
-SCRIPT_DIR=$(
-    cd "$(dirname "$0")" || exit 1
-    pwd
-)
-
-[ -f "$SCRIPT_DIR/func.opt.sh" ] && . "$SCRIPT_DIR/func.opt.sh"
+# conda lazy load
+_conda_lazy_load() {
+    unset -f conda
+    local conda_sh="/opt/conda/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "$conda_sh" ]; then
+        . "$conda_sh"
+        conda "$@"
+    else
+        echo "ERROR: Conda start script not found [$conda_sh]"  >&2
+        return 127
+    fi
+}
+conda() {
+    _conda_lazy_load "$@"
+}

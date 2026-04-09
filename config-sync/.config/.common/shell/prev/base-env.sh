@@ -3,7 +3,7 @@
 # sys editor
 export EDITOR='nvim'
 
-# XDG config env
+# XDG base dir
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
@@ -41,6 +41,9 @@ export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME"/npm/config/npm-init.js
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
 export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
+# volta
+export VOLTA_HOME="$XDG_DATA_HOME"/volta
+export PATH="$VOLTA_HOME"/bin:"$PATH"
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
 # cuda
@@ -53,14 +56,4 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 # kde
 export KDEHOME="$XDG_CONFIG_HOME"/kde
-# volta
-export VOLTA_HOME="$HOME/.local/share/volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
-# source out env
-SCRIPT_DIR=$(
-    cd "$(dirname "$0")" || exit 1
-    pwd
-)
-
-[ -f "$SCRIPT_DIR/env.opt.sh" ] && . "$SCRIPT_DIR/env.opt.sh"

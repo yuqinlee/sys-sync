@@ -1,10 +1,4 @@
 # =============================================================================
-#                       导入通用 shell 环境
-# =============================================================================
-[[ -s "$XDG_CONFIG_HOME/.common/shell/alias.main.sh" ]] && source "$XDG_CONFIG_HOME/.common/shell/alias.main.sh"
-[[ -s "$XDG_CONFIG_HOME/.common/shell/func.main.sh" ]] && source "$XDG_CONFIG_HOME/.common/shell/func.main.sh"
-
-# =============================================================================
 #                           基本设置
 # =============================================================================
 bindkey -v              # vi 模式
@@ -38,7 +32,7 @@ setopt INC_APPEND_HISTORY   # 命令执行后立即写入历史文件
 fpath=(
     "$XDG_CONFIG_HOME"/zsh/external/site-functions
     /opt/homebrew/share/zsh/site-functions
-  $fpath
+    $fpath
 )
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION           # 指定 zcompdump 缓存目录，补全函数索引缓存
@@ -115,3 +109,15 @@ znap eval mise "mise activate zsh"          # mise
 # > ctrl+r search history
 # > ctrl+i completions
 # source "$XDG_CONFIG_HOME"/zsh/external/fzf.zsh
+
+# =============================================================================
+#                           导入通用配置
+# =============================================================================
+autoload -Uz add-zsh-hook
+
+_load_common_config() {
+    [[ -s "$XDG_CONFIG_HOME/.common/shell/import-base.sh" ]] &&
+        source "$XDG_CONFIG_HOME/.common/shell/import-base.sh"
+    add-zsh-hook -d precmd _load_common_config
+}
+add-zsh-hook precmd _load_common_config
