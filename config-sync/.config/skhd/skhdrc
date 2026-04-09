@@ -1,0 +1,97 @@
+# =========================================================
+# 应用启动（opener control）
+# =========================================================
+ctrl - return : open -a Kitty
+shift + cmd - return : open -a Kitty --args --single-instance
+
+ctrl - e : open -a Kitty --args -e yazi
+ctrl - b : open -a Firefox
+ctrl - q : yabai -m window --close
+
+# =========================================================
+# workspace (space) 控制
+# =========================================================
+# 切换 space
+ctrl - 1 : yabai -m space --focus 1
+ctrl - 2 : yabai -m space --focus 2
+ctrl - 3 : yabai -m space --focus 3
+cmd - 4 : yabai -m space --focus 4
+cmd - 5 : yabai -m space --focus 5
+cmd - 6 : yabai -m space --focus 6
+cmd - 7 : yabai -m space --focus 7
+cmd - 8 : yabai -m space --focus 8
+cmd - 9 : yabai -m space --focus 9
+cmd - 0 : yabai -m space --focus 10
+
+# 移动窗口到 space
+shift + cmd - 1 : yabai -m window --space 1
+shift + cmd - 2 : yabai -m window --space 2
+shift + cmd - 3 : yabai -m window --space 3
+shift + cmd - 4 : yabai -m window --space 4
+shift + cmd - 5 : yabai -m window --space 5
+shift + cmd - 6 : yabai -m window --space 6
+shift + cmd - 7 : yabai -m window --space 7
+shift + cmd - 8 : yabai -m window --space 8
+shift + cmd - 9 : yabai -m window --space 9
+shift + cmd - 0 : yabai -m window --space 10
+
+# 类似 special workspace（替代）
+cmd - s : yabai -m space --focus recent
+
+# =========================================================
+# 窗口控制（application window control）
+# =========================================================
+
+# 浮动 / 平铺
+cmd - space : yabai -m window --toggle float
+
+# 居中浮动窗口（近似替代）
+shift + cmd - space : yabai -m window --grid 4:4:1:1:2:2
+
+# fullscreen
+cmd - f : yabai -m window --toggle zoom-fullscreen
+shift + cmd - f : yabai -m window --toggle native-fullscreen
+
+# pin（sticky）
+cmd - g : yabai -m window --toggle sticky
+
+# resize
+ctrl + cmd - h : yabai -m window --resize left:-20:0
+ctrl + cmd - l : yabai -m window --resize right:20:0
+ctrl + cmd - k : yabai -m window --resize top:0:-20
+ctrl + cmd - j : yabai -m window --resize bottom:0:20
+
+# pseudo 替代
+cmd - p : yabai -m window --toggle zoom-parent
+
+# =========================================================
+# 焦点移动（hjkl）
+# =========================================================
+cmd - h : yabai -m window --focus west
+cmd - l : yabai -m window --focus east
+cmd - k : yabai -m window --focus north
+cmd - j : yabai -m window --focus south
+
+# =========================================================
+# 窗口移动（类似 movetoworkspace / warp）
+# =========================================================
+shift + cmd - h : yabai -m window --warp west
+shift + cmd - l : yabai -m window --warp east
+shift + cmd - k : yabai -m window --warp north
+shift + cmd - j : yabai -m window --warp south
+
+# =========================================================
+# workspace 滚动切换
+# =========================================================
+cmd - tab : yabai -m space --focus next
+shift + cmd - tab : yabai -m space --focus prev
+
+cmd - mouse_up : yabai -m space --focus next
+cmd - mouse_down : yabai -m space --focus prev
+
+# =========================================================
+# ALT+TAB（建议配合 AltTab.app）
+# =========================================================
+alt - tab : yabai -m window --focus recent
+shift + alt - tab : yabai -m window --focus prev
+
