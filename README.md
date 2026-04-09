@@ -226,8 +226,9 @@ qt与 wayland
 sudo pacman -S qt5-wayland qt6-wayland
 ```
 
-- avahi  mDNS daemon
+- avahi mDNS daemon
 - nss-mdns 让系统支持 .local 解析
+
 ```bash
 sudo systemctl enable --now avahi-daemon
 ```
@@ -259,6 +260,7 @@ brew install volta
 ```
 
 创建/data目录
+
 ```bash
 # 1. 创建真实目录
 sudo mkdir -p /System/Volumes/Data/data
@@ -275,8 +277,66 @@ data    System/Volumes/Data/data
 - [brew安装完全指南：多系统适配与国内源配置技巧](https://www.trae.cn/article/660492802)
 - [Mac 下安装和使用 Homebrew](https://www.wulicode.com/os/mac/homebrew.html)
 
-
 macfuse安装+ rclone 自建仓
 
 - [](https://www.cnblogs.com/zxhoo/p/19639636)
 
+---
+
+```bash
+==> Fetching downloads for: yabai
+✔︎ Formula yabai (7.1.18)                                                   Verified    787.5KB/787.5KB
+==> Installing yabai from koekeishiya/formulae
+==> Caveats
+Copy the example configuration into your home directory:
+  cp /opt/homebrew/opt/yabai/share/yabai/examples/yabairc ~/.yabairc
+  cp /opt/homebrew/opt/yabai/share/yabai/examples/skhdrc ~/.skhdrc
+
+If you want yabai to be managed by launchd (start automatically upon login):
+  yabai --start-service
+
+When running as a launchd service logs will be found in:
+  /tmp/yabai_<user>.[out|err].log
+
+If you are using the scripting-addition; remember to update your sudoers file:
+  sudo visudo -f /private/etc/sudoers.d/yabai
+
+Build the configuration row by running:
+  echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa"
+
+README: https://github.com/asmvik/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+==> Summary
+🍺  /opt/homebrew/Cellar/yabai/7.1.18: 7 files, 1.8MB, built in 0 seconds
+==> Running `brew cleanup yabai`...
+Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
+Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+~ 12s ➜ yabai
+```
+
+```bash
+==> Fetching downloads for: skhd
+✔︎ Formula skhd (0.3.9)
+==> Installing skhd from
+==> make -j1 install
+==> codesign -fs - /private/tmp/skhd-2026
+==> Caveats
+Copy the example configuration into yourhome directory:
+  cp /opt/homebrew/opt/skhd/share/skhd/examples/skhdrc ~/.skhdrc
+
+If you want skhd to be managed by launchd (start automatically upon login):
+  skhd --start-service
+
+When running as a launchd service logs will be found in:
+  /tmp/skhd_<user>.[out|err].log
+==> Summary
+🍺  /opt/homebrew/Cellar/skhd/0.3.9: 7 files, 131.6KB, built in 2 seconds
+==> Running `brew cleanu
+Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
+Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+```
+
+for pdf overview
+
+```bash
+Installing dependencies for pdftoipe: gmp, libtasn1, nettle, p11-kit, libevent, libnghttp2, unbound, gnutls, libgpg-error, libassuan, libgcrypt, libksba, libusb, npth, pinentry, gnupg, gpgme, gpgmepp, nspr, nss, openjpeg and poppler
+```
