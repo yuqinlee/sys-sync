@@ -6,6 +6,10 @@ local lang_conf = {
     vim = require "lang.server.vim",
     json = require "lang.server.json",
     toml = require "lang.server.toml",
+    shell = require "lang.server.shell",
+    conf = require "lang.server.conf",
+    markdown = require "lang.server.markdown",
+    frontend = require "lang.server.frontend",
 }
 
 ------------------------------------------------
