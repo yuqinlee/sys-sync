@@ -49,10 +49,10 @@
     </dict>
 
     <key>StandardOutPath</key>
-    <string>/Users/yuchin/.local/share/rclone/rclone-mount-out.log</string>
+    <string>/Users/yuchin/.local/state/rclone/rclone-mount-out.log</string>
  
     <key>StandardErrorPath</key>
-    <string>/Users/yuchin/.local/share/rclone/rclone-mount-err.log</string>
+    <string>/Users/yuchin/.local/state/rclone/rclone-mount-err.log</string>
 
   </dict>
 </plist>
