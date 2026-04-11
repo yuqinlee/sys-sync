@@ -17,8 +17,8 @@ vicmd_symbol = "[](bright-blue)"
 [directory]
 style = "bold cyan"
 home_symbol = "~"
-read_only='  '
-read_only_style='red'
+read_only = '  '
+read_only_style = 'red'
 truncation_length = 1
 truncate_to_repo = false
 
@@ -88,4 +88,3 @@ disabled = true
 
 [kubernetes]
 disabled = true
-
