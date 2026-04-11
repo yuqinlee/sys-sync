@@ -4,5 +4,5 @@
 IMPORT_PRE="$HOME/.config/.common/shell/import-prev.sh"
 
 if [ -s "$IMPORT_PRE" ]; then
-    . "$IMPORT_PRE"
+    source "$IMPORT_PRE"
 fi

@@ -112,12 +112,22 @@ znap eval mise "mise activate zsh"          # mise
 
 # =============================================================================
 #                           导入通用配置
+#                       最后导入防止缺失系统环境
 # =============================================================================
 autoload -Uz add-zsh-hook
-
 _load_common_config() {
     [[ -s "$XDG_CONFIG_HOME/.common/shell/import-base.sh" ]] &&
         source "$XDG_CONFIG_HOME/.common/shell/import-base.sh"
     add-zsh-hook -d precmd _load_common_config
 }
 add-zsh-hook precmd _load_common_config
+
+# =============================================================================
+#                           导入zsh 专有
+# =============================================================================
+_load_auto_env() {
+    [[ -s "$XDG_CONFIG_HOME/zsh/external/hook/auto-env.zsh" ]] &&
+        source "$XDG_CONFIG_HOME/zsh/external/hook/auto-env.zsh"
+    add-zsh-hook -d precmd _load_auto_env
+}
+add-zsh-hook precmd _load_auto_env
