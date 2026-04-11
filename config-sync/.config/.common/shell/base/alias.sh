@@ -14,11 +14,10 @@ alias ll='eza -lBbgha --icons=auto'
 alias tree="eza --tree --icons"
 
 # cat
-alias cat='bat' 
+alias cat='bat'
 
 # grep
 alias grep='grep --color=auto'
 
 # python
 alias py='python'
-

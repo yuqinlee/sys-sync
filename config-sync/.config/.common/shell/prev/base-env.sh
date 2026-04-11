@@ -56,4 +56,3 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 # kde
 export KDEHOME="$XDG_CONFIG_HOME"/kde
-

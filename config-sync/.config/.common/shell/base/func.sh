@@ -1,15 +1,15 @@
 # FHS config for software by xdg-ninja
 function wget() {
-    command wget --hsts-file="$XDG_DATA_HOME/wget-hsts" "$@"
+    command wget --hsts-file="$XDG_DATA_HOME/wget/wget-hsts" "$@"
 }
 
 # yazi wrapper
 function f() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	command yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd <"$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
 }
 
 # proxy config based v2ray
@@ -42,7 +42,7 @@ _conda_lazy_load() {
         . "$conda_sh"
         conda "$@"
     else
-        echo "ERROR: Conda start script not found [$conda_sh]"  >&2
+        echo "ERROR: Conda start script not found [$conda_sh]" >&2
         return 127
     fi
 }
