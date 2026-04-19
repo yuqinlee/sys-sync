@@ -3,7 +3,7 @@ set -euo pipefail
 
 # public config stow
 stow \
-    --target $HOME . \
+    --target "$HOME" . \
     --adopt \
     --ignore multi \
     --ignore etc \

@@ -1,8 +1,4 @@
 # =============================================================================
 #                       导入通用 shell 环境
 # =============================================================================
-IMPORT_PRE="$HOME/.config/.common/shell/import-prev.sh"
-
-if [ -s "$IMPORT_PRE" ]; then
-    source "$IMPORT_PRE"
-fi
+source "${XDG_CONFIG_HOME:-$HOME}/.config/.common/shell/import-prev.sh"

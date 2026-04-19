@@ -51,7 +51,7 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 # ffmpeg
 export FFMPEG_DATADIR="$XDG_CONFIG_HOME"/ffmpeg
 # java
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+# export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 # jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 # kde

@@ -14,16 +14,15 @@ setopt NO_CASE_GLOB     # 忽略大小写匹配文件名
 # =============================================================================
 HISTFILE="$XDG_CACHE_HOME"/zsh/zsh_history # 历史文件路径
 HISTSIZE=1000                              # 当前 session 保存条数
-SAVEHIST=1000                              # 写入文件的条数
 setopt HIST_REDUCE_BLANKS                  # 删除多余空格
 setopt HIST_IGNORE_SPACE                   # 忽略以空格开头的命令
 setopt HIST_SAVE_NO_DUPS                   # 保存时去重
 setopt HIST_VERIFY                         # 回车前先显示命令
-setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS # 删除旧的重复项
-setopt APPEND_HISTORY       # 追加历史
-setopt EXTENDED_HISTORY     # 扩展历史记录
-setopt INC_APPEND_HISTORY   # 命令执行后立即写入历史文件
+setopt HIST_FIND_NO_DUPS                   # 去除重复
+setopt HIST_IGNORE_ALL_DUPS                # 删除旧的重复项
+setopt APPEND_HISTORY                      # 追加历史
+setopt EXTENDED_HISTORY                    # 扩展历史记录
+setopt INC_APPEND_HISTORY                  # 命令执行后立即写入历史文件
 
 # =============================================================================
 #                              补全
@@ -32,10 +31,10 @@ setopt INC_APPEND_HISTORY   # 命令执行后立即写入历史文件
 fpath=(
     "$XDG_CONFIG_HOME"/zsh/external/site-functions
     /opt/homebrew/share/zsh/site-functions
-    $fpath
+    "${fpath[@]}"
 )
 autoload -Uz compinit
-compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION           # 指定 zcompdump 缓存目录，补全函数索引缓存
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"         # 指定 zcompdump 缓存目录，补全函数索引缓存
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache # 指定运行期缓存，只影响补全阶段
 zstyle ':completion:*:git-checkout:*' sort false                   # disable sort when completing `git checkout`
 zstyle ':completion:*:descriptions' format '[%d]'                  # set descriptions format to enable group support, %d = description

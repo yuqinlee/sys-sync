@@ -1,17 +1,16 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
 
 # cancel public config stow
 stow \
     --delete \
-    --target ~ . \
+    --target "$HOME" . \
     --ignore multi \
     --ignore etc \
     --ignore stow-on.sh \
     --ignore stow-off.sh \
     --ignore README.md
 
-# cancel multi device config stow
 HOST="$(uname -n)"
 STOW_DIR="./multi"
 

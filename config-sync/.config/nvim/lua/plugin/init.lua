@@ -36,7 +36,7 @@ require("lazy").setup {
     install = { colorscheme = { "onedarkpro" } },
 
     -- automatically check for plugin updates
-    checker = { enabled = true },
+    checker = { enabled = false },
 
     lockfile = vim.fn.stdpath "config" .. "/lua/plugin/lazy-lock.json",
 }
