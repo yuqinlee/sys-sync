@@ -1,17 +1,33 @@
-# environment variables of system inner
+# environment variables for base system
+#
+# @author: yuchin
+# @version: 2026/04/25
 
+# ==============================================================================
+#                           System base tools
+# ==============================================================================
 # sys editor
 export EDITOR='nvim'
 
-# XDG base dir
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_STATE_HOME=$HOME/.local/state
-export XDG_PICTURES_DIR=$HOME/Pictures
-export XDG_RUNTIME_DIR=/run/user/$UID
+# ==============================================================================
+#                                   XDG
+# ==============================================================================
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_STATE_HOME="$HOME"/.local/state
+export XDG_DESKTOP_DIR="$HOME"/Desktop
+export XDG_DOWNLOAD_DIR="$HOME"/Downloads
+export XDG_TEMPLATES_DIR="$HOME"/Templates
+export XDG_PUBLICSHARE_DIR="$HOME"/Public
+export XDG_DOCUMENTS_DIR="$HOME"/Documents
+export XDG_MUSIC_DIR="$HOME"/Music
+export XDG_PICTURES_DIR="$HOME"/Pictures
+export XDG_VIDEOS_DIR="$HOME"/Videos
 
-# FHS config for software by xdg-ninja
+# ==============================================================================
+#                           FHS config for software
+# ==============================================================================
 # gtk
 export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
@@ -23,6 +39,7 @@ export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 # cargo
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export PATH="$CARGO_HOME"/bin:$PATH
 # donet
 export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
 # go
@@ -56,3 +73,11 @@ export FFMPEG_DATADIR="$XDG_CONFIG_HOME"/ffmpeg
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 # kde
 export KDEHOME="$XDG_CONFIG_HOME"/kde
+# uv
+export UV_TOOL_BIN_DIR="$XDG_DATA_HOME"/uv/bin
+export UV_PYTHON_BIN_DIR="$XDG_DATA_HOME"/uv/bin
+export UV_TOOL_DIR="$XDG_DATA_HOME"/uv/tools
+export UV_PYTHON_INSTALL_DIR="$XDG_DATA_HOME"/uv/python
+export PATH="$PATH":"$XDG_DATA_HOME"/uv/bin
+# kimi
+export KIMI_SHARE_DIR="$XDG_STATE_HOME"/kimi

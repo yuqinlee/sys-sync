@@ -8,10 +8,10 @@ alias lg='lazygit'
 alias ff='fastfetch'
 
 # eza
-alias ls='eza -Bbh --icons=auto'
-alias l='eza -lBbgh --icons=auto'
-alias ll='eza -lBbgha --icons=auto'
-alias tree="eza --tree --icons"
+alias ls='eza -Bbh --icons=never'
+alias l='eza -lBbgh --icons=never'
+alias ll='eza -lBbgha --icons=never'
+alias tree="eza --tree --icons=never"
 
 # cat
 alias cat='bat'
@@ -21,3 +21,6 @@ alias grep='grep --color=auto'
 
 # python
 alias py='python'
+
+# tldr
+alias t='tldr'
