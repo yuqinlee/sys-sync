@@ -1,4 +1,4 @@
 # =============================================================================
 #                       导入通用 shell 环境
 # =============================================================================
-source "${XDG_CONFIG_HOME:-$HOME}/.config/.common/shell/import-prev.sh"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/.common/shell/import-prev.sh"
