@@ -47,6 +47,9 @@ renamed = "»${count}"
 deleted = "-${count}"
 
 [cmd_duration]
+disabled = false
+min_time = 0                    # 关键：0ms 起就显示（每次都显示）
+show_milliseconds = true        # 强制显示 ms（新版 starship 支持）
 format = "[$duration]($style) "
 style = "yellow"
 
