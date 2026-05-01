@@ -130,18 +130,3 @@ _load_auto_env() {
     add-zsh-hook -d precmd _load_auto_env
 }
 add-zsh-hook precmd _load_auto_env
-
-zmodload zsh/datetime
-
-preexec() {
-    CMD_START_TIME=$EPOCHREALTIME
-}
-
-precmd() {
-    if [[ -n $CMD_START_TIME ]]; then
-        local end=$EPOCHREALTIME
-        local duration_ms=$(((end - CMD_START_TIME) * 1000))
-        printf " [%d ms]\n" $duration_ms
-        unset CMD_START_TIME
-    fi
-}
