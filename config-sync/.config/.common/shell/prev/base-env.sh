@@ -1,7 +1,7 @@
 # environment variables for base system
 #
-# @author: yuchin
-# @version: 2026/04/25
+# @author yuchin
+# @version 2026/04/25
 
 # ==============================================================================
 #                           System base tools

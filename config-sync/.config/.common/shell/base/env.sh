@@ -1,14 +1,15 @@
-# java
-JAVA_HOME=$(mise where java)
-export JAVA_HOME
-export PATH=$JAVA_HOME/bin:$PATH
-
-# maven
-MAVEN_HOME=$(mise where maven)
-export MAVEN_HOME
-export M2_HOME=$MAVEN_HOME
-export PATH=$MAVEN_HOME/bin:$PATH
-export MAVEN_REPOSITORY=$XDG_DATA_HOME/maven/repository
+if command -v mise &>/dev/null; then
+    JAVA_HOME=$(mise where java)
+    MAVEN_HOME=$(mise where maven)
+    # java
+    export JAVA_HOME
+    export PATH=$JAVA_HOME/bin:$PATH
+    # maven
+    export MAVEN_HOME
+    export M2_HOME=$MAVEN_HOME
+    export PATH=$MAVEN_HOME/bin:$PATH
+    export MAVEN_REPOSITORY=$XDG_DATA_HOME/maven/repository
+fi
 
 # brew
 export PATH=/opt/homebrew/bin:$PATH
