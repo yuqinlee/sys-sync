@@ -40,3 +40,5 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_INSTALL_CLEANUP=1
 # 关闭 emoji 🍺 显示
 export HOMEBREW_NO_EMOJI=1
+# 对于自动更新的、latest 等软件纳入更新
+export HOMEBREW_UPGRADE_GREEDY=1
