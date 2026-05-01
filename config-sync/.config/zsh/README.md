@@ -65,7 +65,7 @@ export PATH="$HOME/.local/bin:$PATH"
 - systemd user 相关
 - keychain / gpg-agent 初始化
 
-###  zshrc
+### zshrc
 
 仅在交互式 shell 启动触发
 
@@ -73,4 +73,3 @@ export PATH="$HOME/.local/bin:$PATH"
 - 新建 tab
 - SSH 进入交互
 - zsh（默认是交互）
-
