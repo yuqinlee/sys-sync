@@ -1,10 +1,12 @@
-if command -v mise &>/dev/null; then
-    JAVA_HOME=$(mise where java)
-    MAVEN_HOME=$(mise where maven)
-    # java
+# mise env export
+# java
+if JAVA_HOME=$(mise where java) >/dev/null 2>&1; then
     export JAVA_HOME
     export PATH=$JAVA_HOME/bin:$PATH
-    # maven
+fi
+
+# maven
+if MAVEN_HOME=$(mise where maven) >/dev/null 2>&1; then
     export MAVEN_HOME
     export M2_HOME=$MAVEN_HOME
     export PATH=$MAVEN_HOME/bin:$PATH
@@ -32,7 +34,11 @@ bcom() {
 # 关闭自动更新防止每次 install 更新
 export HOMEBREW_NO_AUTO_UPDATE=1
 # 并行编译对于从源码编译软件提升
-HOMEBREW_MAKE_JOBS=$(sysctl -n hw.ncpu)
+if [[ "$OSTYPE" == linux-gnu* ]]; then
+    HOMEBREW_MAKE_JOBS=$(nproc)
+else
+    HOMEBREW_MAKE_JOBS=$(sysctl -n hw.ncpu)
+fi
 export HOMEBREW_MAKE_JOBS
 # 关闭提示信息
 export HOMEBREW_NO_ENV_HINTS=1
