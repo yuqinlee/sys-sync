@@ -25,7 +25,7 @@ return {
         -- 2026-02-22 使用 mason 安装报错，提示依赖 python 版本需要小于 3.14
         -- 暂时先不使用 cmake 的 lsp，本身 clangd 里边其实是带的
         cmake = {
-            enable = true,
+            enable = false,
             mason = false,
             opts = {},
         },

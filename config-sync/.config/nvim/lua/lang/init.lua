@@ -10,6 +10,7 @@ local lang_conf = {
     conf = require "lang.server.conf",
     markdown = require "lang.server.markdown",
     frontend = require "lang.server.frontend",
+    xml = require "lang.server.xml",
 }
 
 ------------------------------------------------
