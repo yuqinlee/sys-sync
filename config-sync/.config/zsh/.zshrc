@@ -34,7 +34,7 @@ fpath=(
     "${fpath[@]}"
 )
 autoload -Uz compinit
-compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"         # 指定 zcompdump 缓存目录，补全函数索引缓存
+compinit -C -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"      # 指定 zcompdump 缓存目录，补全函数索引缓存
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache # 指定运行期缓存，只影响补全阶段
 zstyle ':completion:*:git-checkout:*' sort false                   # disable sort when completing `git checkout`
 zstyle ':completion:*:descriptions' format '[%d]'                  # set descriptions format to enable group support, %d = description
