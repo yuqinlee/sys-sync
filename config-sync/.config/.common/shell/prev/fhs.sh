@@ -3,11 +3,6 @@
 # @author yuchin
 # @version 2026/04/25
 
-# ==============================================================================
-#                           System base tools
-# ==============================================================================
-# sys editor
-export EDITOR='nvim'
 
 # ==============================================================================
 #                               XDG env
@@ -84,3 +79,7 @@ export UV_PYTHON_INSTALL_DIR="$XDG_DATA_HOME"/uv/python
 export PATH="$PATH":"$XDG_DATA_HOME"/uv/bin
 # kimi
 export KIMI_SHARE_DIR="$XDG_STATE_HOME"/kimi
+# wget
+function wget() {
+    command wget --hsts-file="$XDG_DATA_HOME/wget/wget-hsts" "$@"
+}

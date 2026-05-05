@@ -24,3 +24,6 @@ alias py='python'
 
 # tldr
 alias t='tldr'
+
+# opencode
+alias oc='opencode'

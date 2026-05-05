@@ -3,4 +3,4 @@ SCRIPT_DIR=$(
     cd "$(dirname "$0")" || exit 1
     pwd
 )
-. "$SCRIPT_DIR"/prev/base-env.sh
+. "$SCRIPT_DIR"/prev/fhs.sh

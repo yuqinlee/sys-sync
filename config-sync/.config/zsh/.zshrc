@@ -85,12 +85,12 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup                                # 
 # zsh-history-substring-search
 # > substring match in history
 # > it always can be instead by fzf-tab
-znap source zsh-users/zsh-history-substring-search
-bindkey -M viins '^K' history-substring-search-up
-bindkey -M viins '^J' history-substring-search-down
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
+# znap source zsh-users/zsh-history-substring-search
+# bindkey -M viins '^K' history-substring-search-up
+# bindkey -M viins '^J' history-substring-search-down
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
+#
 # fast-syntax-highlighting
 znap source zdharma-continuum/fast-syntax-highlighting
 
@@ -119,8 +119,8 @@ source "$XDG_CONFIG_HOME"/zsh/external/site-functions/_fzf.zsh
 # =============================================================================
 autoload -Uz add-zsh-hook
 _load_common_config() {
-    [[ -s "$XDG_CONFIG_HOME/.common/shell/import-base.sh" ]] &&
-        source "$XDG_CONFIG_HOME/.common/shell/import-base.sh"
+    [[ -s "$XDG_CONFIG_HOME/.common/shell/import-post.sh" ]] &&
+        source "$XDG_CONFIG_HOME/.common/shell/import-post.sh"
     add-zsh-hook -d precmd _load_common_config
 }
 add-zsh-hook precmd _load_common_config
