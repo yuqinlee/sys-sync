@@ -3,7 +3,6 @@
 # @author yuchin
 # @version 2026/04/25
 
-
 # ==============================================================================
 #                               XDG env
 # ==============================================================================
@@ -80,6 +79,6 @@ export PATH="$PATH":"$XDG_DATA_HOME"/uv/bin
 # kimi
 export KIMI_SHARE_DIR="$XDG_STATE_HOME"/kimi
 # wget
-function wget() {
+wget() {
     command wget --hsts-file="$XDG_DATA_HOME/wget/wget-hsts" "$@"
 }

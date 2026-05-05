@@ -18,18 +18,14 @@ pon() {
 pof() {
     unset http_proxy https_proxy ALL_PROXY
 }
+# Tips: config in shell for show RPROMPT
 proxy_status() {
-    if [[ -n "$http_proxy" || -n "$HTTP_PROXY" ]]; then
+    if [ -n "$http_proxy" ] || [ -n "$HTTP_PROXY" ]; then
         echo "%F{green}$PROXY_ICON_ON%f"
     else
         echo "%F{red}$PROXY_ICON_OFF%f"
     fi
 }
-_update_proxy_prompt() {
-    RPROMPT="$(proxy_status)"
-}
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd _update_proxy_prompt
 
 # ==============================================================================
 #                               brew config

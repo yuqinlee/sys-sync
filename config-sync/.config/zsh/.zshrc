@@ -3,7 +3,7 @@
 # =============================================================================
 bindkey -v              # vi 模式
 export KEYTIMEOUT=1     # vi 模式配置后不会有延迟
-unsetopt BEEP           #禁用 beep
+unsetopt BEEP           # 禁用 beep
 setopt AUTO_CD          # 自动切换目录
 setopt AUTO_PARAM_SLASH # 自动补全路径
 setopt CORRECT          # 启用命令自动纠错
@@ -134,3 +134,8 @@ _load_auto_env() {
     add-zsh-hook -d precmd _load_auto_env
 }
 add-zsh-hook precmd _load_auto_env
+
+_load_proxy_prompt() {
+    RPROMPT="$(proxy_status)"
+}
+add-zsh-hook precmd _load_proxy_prompt
