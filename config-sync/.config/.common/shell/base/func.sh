@@ -30,9 +30,11 @@ proxy_status() {
         echo "%F{red}$PROXY_ICON_OFF%f"
     fi
 }
-precmd() {
+_update_proxy_prompt() {
     RPROMPT="$(proxy_status)"
 }
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _update_proxy_prompt
 
 # conda lazy load
 _conda_lazy_load() {

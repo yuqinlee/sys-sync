@@ -7,11 +7,14 @@ export _AUTO_VENV_PATH=""
 auto_venv() {
     # 当前目录或父目录查找 .venv
     local venv_path=$(pwd)
-    while [[ "$venv_path" != "/" ]]; do
+    local depth=0
+    local max_depth=5
+    while [[ "$venv_path" != "/" && $depth -lt $max_depth ]]; do
         if [[ -d "$venv_path/.venv" ]]; then
             break
         fi
         venv_path=$(dirname "$venv_path")
+        ((depth++))
     done
 
     # 找不到 .venv

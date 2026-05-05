@@ -10,7 +10,7 @@
 export EDITOR='nvim'
 
 # ==============================================================================
-#                                   XDG
+#                               XDG env
 # ==============================================================================
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
@@ -25,6 +25,7 @@ export XDG_MUSIC_DIR="$HOME"/Music
 export XDG_PICTURES_DIR="$HOME"/Pictures
 export XDG_VIDEOS_DIR="$HOME"/Videos
 export XDG_RUNTIME_DIR=/run/user/$UID
+
 # ==============================================================================
 #                           FHS config for software
 # ==============================================================================

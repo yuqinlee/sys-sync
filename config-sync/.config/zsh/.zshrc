@@ -3,6 +3,7 @@
 # =============================================================================
 bindkey -v              # vi 模式
 export KEYTIMEOUT=1     # vi 模式配置后不会有延迟
+unsetopt BEEP           #禁用 beep
 setopt AUTO_CD          # 自动切换目录
 setopt AUTO_PARAM_SLASH # 自动补全路径
 setopt CORRECT          # 启用命令自动纠错
@@ -69,9 +70,6 @@ znap source zsh-users/zsh-completions
 
 # fzf-tab
 # > completion-ui for completion
-# > 1. it must be load before zsh-autosuggestions and so on
-# > 2. run cmd: `fzf --zsh > "$XDG_CONFIG_HOME"/zsh/external/fzf.zsh` after installed fzf
-# > 3. source "$XDG_CONFIG_HOME"/zsh/.fzf.zsh
 znap source Aloxaf/fzf-tab
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath' # preview directory's content with eza when completing cd
 zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2                              # custom fzf flags `fzf-flags --color=fg:1,fg+:2 --bind=tab:accept` 则使用 tab 选择
@@ -81,10 +79,12 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup                                # 
 
 # zsh-autosuggestions
 # > completion a line command totally
-znap source zsh-users/zsh-autosuggestions
+# > it makes zsh slow when enter even nothing command exec
+# znap source zsh-users/zsh-autosuggestions
 
 # zsh-history-substring-search
 # > substring match in history
+# > it always can be instead by fzf-tab
 znap source zsh-users/zsh-history-substring-search
 bindkey -M viins '^K' history-substring-search-up
 bindkey -M viins '^J' history-substring-search-down
@@ -102,12 +102,16 @@ znap eval startship "starship init zsh"     # starship
 znap eval zoxide "zoxide init zsh --cmd cd" # zoxide
 znap eval mise "mise activate zsh"          # mise
 
-# fzf keybind
+# fzf terminal keybind
+# > 1. it must be load before zsh-autosuggestions and so on
+# > 2. run cmd: `"$XDG_CONFIG_HOME"/zsh/external/site-functions/_fzf.zsh` after installed fzf
+# > 3. source "$XDG_CONFIG_HOME"/zsh/external/site-functions/_fzf.zsh
+#
 # > ctrl+t search file
 # > alt+c  search file and cd to dir
 # > ctrl+r search history
 # > ctrl+i completions
-# source "$XDG_CONFIG_HOME"/zsh/external/fzf.zsh
+source "$XDG_CONFIG_HOME"/zsh/external/site-functions/_fzf.zsh
 
 # =============================================================================
 #                           导入通用配置
