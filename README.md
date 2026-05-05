@@ -154,6 +154,7 @@ sudo passwd yuchin
 - lua
 - openssh
 - git
+- usage 一些命令补全需要用到
 
 ## hypr 生态
 

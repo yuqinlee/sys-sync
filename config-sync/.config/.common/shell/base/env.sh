@@ -6,7 +6,8 @@ if JAVA_HOME=$(mise where java) >/dev/null 2>&1; then
 fi
 
 # maven
-if MAVEN_HOME=$(mise where maven) >/dev/null 2>&1; then
+if MAVEN_VER=$(mise where maven) >/dev/null 2>&1; then
+    MAVEN_HOME=$(find "$MAVEN_VER" -maxdepth 1 -type d -name 'apache-maven-*' | head -1)
     export MAVEN_HOME
     export M2_HOME=$MAVEN_HOME
     export PATH=$MAVEN_HOME/bin:$PATH
