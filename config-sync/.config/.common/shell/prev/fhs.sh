@@ -4,6 +4,11 @@
 # @version 2026/04/25
 
 # ==============================================================================
+#                               prev path
+#                       make dev tools before system path
+# ==============================================================================
+PREV_PATH="" # prev 中用 path 时系统 path 还没加进来，在 post 期间才有系统 path
+# ==============================================================================
 #                               XDG env
 # ==============================================================================
 export XDG_CONFIG_HOME="$HOME"/.config
@@ -36,7 +41,7 @@ export TEXMFVAR="$XDG_CACHE_HOME"/texlive/texmf-var
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 # cargo
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export PATH="$CARGO_HOME"/bin:$PATH
+export PREV_PATH="$CARGO_HOME"/bin:$PREV_PATH
 # donet
 export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
 # go
@@ -57,7 +62,7 @@ export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
 # volta
 export VOLTA_HOME="$XDG_DATA_HOME"/volta
-export PATH="$VOLTA_HOME"/bin:"$PATH"
+export PREV_PATH="$VOLTA_HOME"/bin:"$PREV_PATH"
 # starship
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
 # cuda
@@ -75,7 +80,7 @@ export UV_TOOL_BIN_DIR="$XDG_DATA_HOME"/uv/bin
 export UV_PYTHON_BIN_DIR="$XDG_DATA_HOME"/uv/bin
 export UV_TOOL_DIR="$XDG_DATA_HOME"/uv/tools
 export UV_PYTHON_INSTALL_DIR="$XDG_DATA_HOME"/uv/python
-export PATH="$PATH":"$XDG_DATA_HOME"/uv/bin
+export PREV_PATH="$XDG_DATA_HOME"/uv/bin:"$PREV_PATH"
 # kimi
 export KIMI_SHARE_DIR="$XDG_STATE_HOME"/kimi
 # wget

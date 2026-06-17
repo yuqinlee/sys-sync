@@ -1,9 +1,10 @@
 # ==============================================================================
-#                           system base tools
+#                             system config
 # ==============================================================================
 # sys editor
 export EDITOR='nvim'
-
+export POST_PATH=$PREV_PATH:$PATH # post 中 系统 path 已经存在
+export PATH=$POST_PATH
 # ==============================================================================
 #                               proxy config
 # ==============================================================================
@@ -28,10 +29,30 @@ proxy_status() {
 }
 
 # ==============================================================================
-#                               brew config
+#                               dev tools
 # ==============================================================================
+# java
+if JAVA_HOME=$(mise where java) >/dev/null 2>&1; then
+    export JAVA_HOME
+    export PATH=$JAVA_HOME/bin:$PATH
+fi
+
+# maven
+if MAVEN_VER=$(mise where maven) >/dev/null 2>&1; then
+    MAVEN_HOME=$(find "$MAVEN_VER" -maxdepth 1 -type d -name 'apache-maven-*' | head -1)
+    export MAVEN_HOME
+    export M2_HOME=$MAVEN_HOME
+    export PATH=$MAVEN_HOME/bin:$PATH
+    export MAVEN_REPOSITORY=$XDG_DATA_HOME/maven/repository
+fi
+
+# ==============================================================================
+#                               mac only
+# ==============================================================================
+# 压缩时避免生成 ._*
+export COPYFILE_DISABLE=1
 # brew
-export PATH=/opt/homebrew/bin:$PATH
+export PATH=$PATH:/opt/homebrew/bin
 # 用API拉取数据替代Git拉仓库以减少依赖 update
 export HOMEBREW_INSTALL_FROM_API=1
 bcn() {
@@ -66,21 +87,3 @@ export HOMEBREW_INSTALL_CLEANUP=1
 export HOMEBREW_NO_EMOJI=1
 # 对于自动更新的、latest 等软件纳入更新
 export HOMEBREW_UPGRADE_GREEDY=1
-
-# ==============================================================================
-#                               dev tools
-# ==============================================================================
-# java
-if JAVA_HOME=$(mise where java) >/dev/null 2>&1; then
-    export JAVA_HOME
-    export PATH=$JAVA_HOME/bin:$PATH
-fi
-
-# maven
-if MAVEN_VER=$(mise where maven) >/dev/null 2>&1; then
-    MAVEN_HOME=$(find "$MAVEN_VER" -maxdepth 1 -type d -name 'apache-maven-*' | head -1)
-    export MAVEN_HOME
-    export M2_HOME=$MAVEN_HOME
-    export PATH=$MAVEN_HOME/bin:$PATH
-    export MAVEN_REPOSITORY=$XDG_DATA_HOME/maven/repository
-fi
