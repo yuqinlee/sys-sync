@@ -1,0 +1,15 @@
+[Unit]
+Description=Clash Verge Rev Service
+; 下面这两行是用于在图形会话启动后在执行 tty 中也需要运行就注释掉
+; 开启静默启动即可使 gui 默认不展示
+; After=graphical-session.target
+; PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/clash-verge
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
