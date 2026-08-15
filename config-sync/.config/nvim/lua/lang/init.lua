@@ -1,3 +1,4 @@
+---@type table<string, LangConf>
 local lang_conf = {
     -- import language config collection
     lua = require "lang.server.lua_server",
@@ -94,7 +95,9 @@ function lang.Parser.mason_tools()
         if conf.formatter then
             for name, fmt_conf in pairs(conf.formatter) do
                 if fmt_conf.enable and fmt_conf.mason then
-                    table.insert(result, name)
+                    if not vim.tbl_contains(result, name) then
+                        table.insert(result, name)
+                    end
                 end
             end
         end
@@ -103,7 +106,9 @@ function lang.Parser.mason_tools()
         if conf.lint then
             for name, lint_conf in pairs(conf.lint) do
                 if lint_conf.enable and lint_conf.mason then
-                    table.insert(result, name)
+                    if not vim.tbl_contains(result, name) then
+                        table.insert(result, name)
+                    end
                 end
             end
         end
@@ -131,7 +136,10 @@ function lang.Parser.formatters_by_ft()
                     for _, ft in ipairs(conf.meta.ft) do
                         result[ft] = result[ft] or {}
                         for _, formatter_name in ipairs(fmt_conf.opts.conform.formatters_by_ft) do
-                            table.insert(result[ft], formatter_name)
+                            -- 这里进行去重
+                            if not vim.tbl_contains(result[ft], formatter_name) then
+                                table.insert(result[ft], formatter_name)
+                            end
                         end
                     end
                 end
@@ -147,7 +155,7 @@ function lang.Parser.formatters()
 
     for _, conf in pairs(lang_conf) do
         if conf.formatter then
-            for _, fmt_conf in pairs(conf.formater or conf.formatter) do
+            for _, fmt_conf in pairs(conf.formatter) do
                 if fmt_conf.enable and fmt_conf.opts and fmt_conf.opts.conform and fmt_conf.opts.conform.formatters then
                     for name, formatter in pairs(fmt_conf.opts.conform.formatters) do
                         -- 避免重复注册
@@ -226,7 +234,10 @@ function lang.Parser.nvim_lint_linters_by_ft()
                 if linter_conf.enable and linter_conf.opts and linter_conf.opts.nvim_lint then
                     for _, ft in ipairs(fts) do
                         result[ft] = result[ft] or {}
-                        table.insert(result[ft], linter_name)
+                        -- 避免重复
+                        if not vim.tbl_contains(result[ft], linter_name) then
+                            table.insert(result[ft], linter_name)
+                        end
                     end
                 end
             end

@@ -1,3 +1,4 @@
+---@type LangConf
 return {
     meta = {
         name = "shell",
@@ -21,11 +22,7 @@ return {
             mason = true,
             opts = {
                 conform = {
-                    formatters_by_ft = {
-                        sh = { "shfmt" },
-                        bash = { "shfmt" },
-                        zsh = { "shfmt" },
-                    },
+                    formatters_by_ft = { "shfmt" },
                     lsp_fallback = false,
                 },
             },

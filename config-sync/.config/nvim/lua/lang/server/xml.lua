@@ -1,3 +1,4 @@
+---@type LangConf
 return {
     meta = {
         name = "xml",
