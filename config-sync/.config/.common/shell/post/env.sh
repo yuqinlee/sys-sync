@@ -9,12 +9,18 @@ export PATH=$POST_PATH
 #                               proxy config
 # ==============================================================================
 # proxy config based v2ray
-PROXY_ICON_ON=""  # nf-fa-globe
-PROXY_ICON_OFF="" # nf-md-lan_disconnect
+PROXY_ICON_ON="" # nf-cod-debug_connected
+PROXY_ICON_OFF="" # nf-cod-debug_disconnect
 pon() {
-    export http_proxy="http://127.0.0.1:20171"
-    export https_proxy="http://127.0.0.1:20171"
-    export ALL_PROXY="socks5://127.0.0.1:20170"
+    # v2raya
+    # export http_proxy="http://127.0.0.1:20171"
+    # export https_proxy="http://127.0.0.1:20171"
+    # export ALL_PROXY="socks5://127.0.0.1:20170"
+
+    # clash-verge-rev
+    export http_proxy="http://127.0.0.1:7897"
+    export https_proxy="http://127.0.0.1:7897"
+    export all_proxy="socks5://127.0.0.1:7897"
 }
 pof() {
     unset http_proxy https_proxy ALL_PROXY
@@ -69,8 +75,10 @@ bcom() {
     export HOMEBREW_BREW_GIT_REMOTE="https://github.com/Homebrew/brew"
     export HOMEBREW_CORE_GIT_REMOTE="https://github.com/Homebrew/homebrew-core"
 }
-# 关闭自动更新防止每次 install 更新
+# brew install 时不自动 brew update
 export HOMEBREW_NO_AUTO_UPDATE=1
+# brew upgrade 时不询问确认
+export HOMEBREW_NO_ASK=1
 # 并行编译对于从源码编译软件提升
 if [[ "$OSTYPE" == linux-gnu* ]]; then
     HOMEBREW_MAKE_JOBS=$(nproc)

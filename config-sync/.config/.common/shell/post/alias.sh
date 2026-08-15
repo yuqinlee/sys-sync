@@ -27,3 +27,15 @@ alias t='tldr'
 
 # opencode
 alias oc='opencode'
+
+# claude code
+alias cc='claude'
+
+# codex
+alias cx='codex'
+
+# herdr
+alias hr='herdr'
+
+# tmux
+alias tm='tmux'

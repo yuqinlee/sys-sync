@@ -75,14 +75,20 @@ export FFMPEG_DATADIR="$XDG_CONFIG_HOME"/ffmpeg
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 # kde
 export KDEHOME="$XDG_CONFIG_HOME"/kde
+# tmux
+export TMUX_PLUGIN_MANAGER_PATH="$XDG_DATA_HOME/tmux/plugins"
 # uv
 export UV_TOOL_BIN_DIR="$XDG_DATA_HOME"/uv/bin
 export UV_PYTHON_BIN_DIR="$XDG_DATA_HOME"/uv/bin
 export UV_TOOL_DIR="$XDG_DATA_HOME"/uv/tools
 export UV_PYTHON_INSTALL_DIR="$XDG_DATA_HOME"/uv/python
 export PREV_PATH="$XDG_DATA_HOME"/uv/bin:"$PREV_PATH"
+# claude code
+export CLAUDE_CONFIG_DIR="$XDG_STATE_HOME"/claude
 # kimi
 export KIMI_SHARE_DIR="$XDG_STATE_HOME"/kimi
+# codex
+export CODEX_HOME="$XDG_STATE_HOME"/codex
 # wget
 wget() {
     command wget --hsts-file="$XDG_DATA_HOME/wget/wget-hsts" "$@"
