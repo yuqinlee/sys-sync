@@ -23,6 +23,9 @@ auto_venv() {
         if [[ -n "$VIRTUAL_ENV" ]]; then
             deactivate
             export _AUTO_VENV_PATH=""
+        else
+            # 如果 VIRTUAL_ENV 为空但 _AUTO_VENV_PATH 非空，清理状态
+            export _AUTO_VENV_PATH=""
         fi
         return
     fi
