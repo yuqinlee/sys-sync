@@ -12,7 +12,6 @@ return {
             "scss",
             "less",
             "html",
-            "json",
         },
     },
 
