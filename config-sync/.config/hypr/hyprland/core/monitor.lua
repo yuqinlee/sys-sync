@@ -1,8 +1,8 @@
 hl.config({
-    xwayland = {
-        -- disable x11 scale
-        force_zero_scaling = true,
-        use_nearest_neighbor = true,
-        enabled = true,
-    },
+	xwayland = {
+		-- disable x11 scale
+		force_zero_scaling = true,
+		use_nearest_neighbor = true,
+		enabled = true,
+	},
 })

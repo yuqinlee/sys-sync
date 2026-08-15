@@ -1,8 +1,6 @@
 -- =============================================================================
 --                  Hyprland Environment Variables
 -- =============================================================================
--- NOTE: HYPRLAND_TRACE=0 (from the old hyprlang config) has no Lua equivalent
--- and has been dropped. Set it in your shell profile if you still need it.
 
 -- =============================================================================
 --                   Toolkit Backend Variables
@@ -56,10 +54,10 @@ hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 -- > 这三者默认不同步，因此需要 import
 -- ==============================================================================
 hl.on("hyprland.start", function()
-    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY")
-    hl.exec_cmd("systemctl --user import-environment XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("systemctl --user import-environment XDG_MENU_PREFIX")
-    hl.exec_cmd("dbus-update-activation-environment XDG_MENU_PREFIX")
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("dbus-update-activation-environment --systemd --all")
+	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY")
+	hl.exec_cmd("systemctl --user import-environment XDG_CURRENT_DESKTOP")
+	hl.exec_cmd("systemctl --user import-environment XDG_MENU_PREFIX")
+	hl.exec_cmd("dbus-update-activation-environment XDG_MENU_PREFIX")
+	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+	hl.exec_cmd("dbus-update-activation-environment --systemd --all")
 end)
