@@ -1,0 +1,92 @@
+-- =============================================================================
+--                         Appearance Config
+-- =============================================================================
+hl.config({
+    general = {
+        border_size = 1,
+
+        gaps_in = 6,
+        gaps_out = 6,
+        gaps_workspaces = 6,
+
+        col = {
+            active_border   = "rgba(98,114,164,0.9)",
+            inactive_border = "rgba(120,120,120,0.3)",
+        },
+
+        layout = "dwindle",
+
+        resize_on_border = true,
+        extend_border_grab_area = 8,
+        hover_icon_on_border = true,
+
+        allow_tearing = false,
+        resize_corner = 0,
+
+        snap = {
+            enabled = false, -- 浮动窗口对齐
+            window_gap = 10,
+            monitor_gap = 10,
+            border_overlap = false,
+        },
+    },
+
+    decoration = {
+        rounding = 12,                -- 圆角半径
+        rounding_power = 2.0,         -- 调整圆角的曲线，越大越平滑
+
+        active_opacity = 1.0,         -- 活动窗口透明度
+        inactive_opacity = 1.0,       -- 非活动窗口透明度
+        fullscreen_opacity = 1.0,     -- 全屏透明度
+        dim_inactive = false,         -- 不活跃窗口变暗
+        dim_strength = 0.2,           -- 变暗强度
+        dim_special = 0.5,            -- 特殊工作区打开时其他工作区变暗
+
+        blur = {
+            enabled = true,
+            size = 6,
+            passes = 3,
+            vibrancy = 0.08,
+            popups = true,
+        },
+
+        shadow = {
+            enabled = true,
+            range = 20,               -- Material 阴影是扩散型
+            render_power = 3,
+            color = "rgba(0,0,0,0.25)",
+        },
+    },
+
+    animations = {
+        enabled = true,
+    },
+
+    dwindle = {
+        -- NOTE: `pseudotile` was removed from the dwindle config in the Lua API.
+        preserve_split = true, -- You probably want this
+    },
+
+    master = {
+        new_status = "master",
+    },
+
+    misc = {
+        -- Set to 0 or 1 to disable the anime mascot wallpapers
+        force_default_wallpaper = -1,
+        -- If true disables the random hyprland logo / anime girl background. :(
+        disable_hyprland_logo = true,
+        disable_splash_rendering = true,
+    },
+})
+
+hl.curve("material", { type = "bezier", points = { {0.2, 0.0}, {0.0, 1.0} } })
+
+hl.animation({ leaf = "windows",     enabled = true, speed = 5, bezier = "material" })
+hl.animation({ leaf = "windowsOut",  enabled = true, speed = 4, bezier = "material" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 5, bezier = "material" })
+hl.animation({ leaf = "fade",        enabled = true, speed = 4, bezier = "default" })
+hl.animation({ leaf = "workspaces",  enabled = true, speed = 4, bezier = "material" })
+
+hl.animation({ leaf = "border",     enabled = false })
+hl.animation({ leaf = "borderangle", enabled = false })
