@@ -6,11 +6,13 @@ local Const = require("hyprland.constants")
 -- =============================================================================
 -- 打开终端
 hl.bind(Const.mainMod .. " + RETURN", hl.dsp.exec_cmd(Const.terminal))
+
 -- 打开一个浮动终端
 hl.bind(
 	Const.mainModShift .. " + RETURN",
 	hl.dsp.exec_cmd(Const.terminal, { float = true, size = { 1500, 800 }, center = true })
 )
+
 -- 打开文件管理器
 hl.bind(
 	Const.mainMod .. " + E",
@@ -19,13 +21,16 @@ hl.bind(
 		{ float = true, size = { 1500, 800 }, center = true }
 	)
 )
+
 -- 打开浏览器
 hl.bind(Const.mainMod .. " + B", hl.dsp.exec_cmd(Const.browser))
+
 -- 打开 menu
 hl.bind(Const.mainMod .. " + R", hl.dsp.exec_cmd("fuzzel"))
 
 -- 关闭窗口
 hl.bind(Const.mainMod .. " + Q", hl.dsp.window.close())
+
 -- 退出 hyprland
 hl.bind(Const.mainMod .. " + M", hl.dsp.exit())
 
@@ -33,16 +38,16 @@ hl.bind(Const.mainMod .. " + M", hl.dsp.exit())
 --                           workspace control
 --                               控制工作区
 -- =============================================================================
--- Switch workspaces with HYPR_MOD + [0-9]
--- Move active window to a workspace with HYPR_MOD + SHIFT + [0-9]
+-- 切换与移动窗口至对应 workspace
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
 	hl.bind(Const.mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	hl.bind(Const.mainModShift .. " + " .. key, hl.dsp.window.move({ workspace = i }))
 end
-
+-- magic workspace
 hl.bind(Const.mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(Const.mainModShift .. " + S", hl.dsp.window.move({ workspace = "special:magic" }))
+
 -- 移动窗口到左边工作区但不切换过去(silent)
 hl.bind(Const.mainModShift .. " + H", hl.dsp.window.move({ workspace = "r-1", follow = false }))
 -- 移动窗口到右边工作区但不切换过去(silent)

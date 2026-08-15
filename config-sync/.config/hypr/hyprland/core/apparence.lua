@@ -76,6 +76,8 @@ hl.config({
 		-- If true disables the random hyprland logo / anime girl background. :(
 		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
+        -- 禁止自动 reload
+        disable_autoreload = true
 	},
 })
 
